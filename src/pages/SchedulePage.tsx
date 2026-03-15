@@ -16,8 +16,35 @@ export default function SchedulePage() {
         Updated intake windows for teacher trainings and retreat formats.
       </p>
 
-      <div className="mt-8 overflow-x-auto rounded-xl border border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]">
-        <table className="w-full min-w-[680px] text-left text-sm">
+      <div className="mt-8 md:hidden">
+        <div className="space-y-3">
+          {upcomingScheduleItems.map((item) => (
+            <article
+              key={`${item.course}-${item.startDate}`}
+              className="rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-4 dark:border-[#5f4938] dark:bg-[#21180f]"
+            >
+              <p className="font-medium">{item.course}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {item.location}
+              </p>
+              <div className="mt-2 text-sm text-muted-foreground">
+                <p>
+                  <span className="font-medium">Start:</span> {item.startDate}
+                </p>
+                <p>
+                  <span className="font-medium">End:</span> {item.endDate}
+                </p>
+                <p>
+                  <span className="font-medium">Status:</span> {item.status}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-8 hidden overflow-x-auto rounded-xl border border-[#d8c6ae] bg-[#fffaf3] md:block dark:border-[#5f4938] dark:bg-[#21180f]">
+        <table className="w-full text-left text-sm">
           <thead className="border-b border-[#d8c6ae] bg-[#f3e8d9] dark:border-[#5f4938] dark:bg-[#2a1f15]">
             <tr>
               <th className="px-4 py-3 font-medium">Course</th>

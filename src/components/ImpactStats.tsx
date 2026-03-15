@@ -180,13 +180,13 @@ function StatItem({
   const current = useCountUp(value, shouldStart);
 
   return (
-    <div className="relative flex flex-col items-center justify-center px-3 py-5 text-center">
+    <div className="relative flex min-w-[168px] snap-start flex-col items-center justify-center px-4 py-5 text-center md:min-w-0">
       <StatIcon index={index} />
-      <p className="mt-2 text-4xl font-light leading-none tracking-tight text-[#2f2920] dark:text-[#f2e8d6]">
+      <p className="mt-2 text-3xl font-light leading-none tracking-tight text-[#2f2920] sm:text-4xl dark:text-[#f2e8d6]">
         {current}
         {suffix}
       </p>
-      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#f26d3d] dark:text-[#f3a077]">
+      <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.13em] text-[#f26d3d] dark:text-[#f3a077]">
         {label}
       </p>
     </div>
@@ -233,17 +233,23 @@ export default function ImpactStats() {
       ref={ref}
       className="border-y border-[#e8d8c3] bg-[#fffdfa]/95 text-[#2f2920] dark:border-[#4a3829] dark:bg-[#1a140f]/95 dark:text-[#f2e8d6]"
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-0 divide-x divide-y divide-[#f0e2cf] md:grid-cols-6 md:divide-y-0 dark:divide-[#3f3024]">
-        {impactStats.map((item, index) => (
-          <StatItem
-            key={item.label}
-            index={index}
-            value={item.value}
-            suffix={item.suffix}
-            label={item.label}
-            shouldStart={visible}
-          />
-        ))}
+      <div className="mx-auto max-w-6xl px-2 py-1 md:px-0">
+        <div className="flex snap-x gap-2 overflow-x-auto pb-2 md:grid md:grid-cols-6 md:gap-0 md:overflow-visible md:pb-0 md:divide-x md:divide-[#f0e2cf] dark:md:divide-[#3f3024]">
+          {impactStats.map((item, index) => (
+            <div
+              key={item.label}
+              className="rounded-md border border-[#f0e2cf] bg-[#fffdf9] md:rounded-none md:border-0 md:bg-transparent dark:border-[#3f3024] dark:bg-[#201913] md:dark:bg-transparent"
+            >
+              <StatItem
+                index={index}
+                value={item.value}
+                suffix={item.suffix}
+                label={item.label}
+                shouldStart={visible}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

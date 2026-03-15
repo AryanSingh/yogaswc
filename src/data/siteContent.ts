@@ -1,3 +1,5 @@
+const uploadsBase = "https://purnamyogashala.com/wp-content/uploads";
+
 export type Course = {
   slug: string;
   title: string;
@@ -38,8 +40,6 @@ export type ImpactStat = {
   suffix: string;
   label: string;
 };
-
-const uploadsBase = "/purnamyogashala.com/wp-content/uploads";
 
 export const siteAssets = {
   hero: `${uploadsBase}/2024/11/yoga-teacher-training-india.jpg`,

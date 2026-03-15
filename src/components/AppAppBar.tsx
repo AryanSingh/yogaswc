@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { contactInfo, courses, socialLinks } from "../data/siteContent";
+import { useCustomerAuth } from "../context/useCustomerAuth";
 import { Button } from "./ui/button";
 import SitemarkIcon from "./SitemarkIcon";
 
@@ -94,6 +95,7 @@ function SocialIcon({ name }: { name: (typeof socialLinks)[number]["name"] }) {
 }
 
 export default function AppAppBar() {
+  const { isAuthenticated, logout, session } = useCustomerAuth();
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
@@ -118,7 +120,7 @@ export default function AppAppBar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
+    <header className="sticky inset-x-0 top-0 z-[70] border-b border-border/60 bg-background/95 backdrop-blur">
       <div className="border-b border-border/60 bg-[#f7efe4]/90 text-[#6a4a33] dark:bg-[#1f1711]/90 dark:text-[#d9b89a]">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 text-xs md:px-6">
           <div className="hidden items-center gap-3 sm:flex">
@@ -150,7 +152,7 @@ export default function AppAppBar() {
         </div>
       </div>
 
-      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-4 md:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-[4.5rem] md:px-6">
         <Link to="/" className="flex items-center gap-3">
           <SitemarkIcon className="h-9 w-9 text-[#8e5a3a] dark:text-[#d3a57c]" />
           <div>
@@ -221,10 +223,11 @@ export default function AppAppBar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[#d8c6ae] md:hidden dark:border-[#5f4938]"
+            className="inline-flex h-10 min-w-10 items-center justify-center rounded-md border border-[#d8c6ae] px-2 md:hidden dark:border-[#5f4938]"
             aria-label="Toggle navigation"
+            aria-expanded={mobileMenuOpen}
           >
-            <span className="text-xs">Menu</span>
+            <span className="text-xs font-medium">Menu</span>
           </button>
           <NavLink to="/contact" className="hidden md:inline-flex">
             <Button
@@ -234,6 +237,23 @@ export default function AppAppBar() {
               Inquire Now
             </Button>
           </NavLink>
+          <NavLink
+            to={isAuthenticated ? "/customer/dashboard" : "/customer/login"}
+            className="hidden md:inline-flex"
+          >
+            <Button size="sm" variant="outline">
+              {isAuthenticated ? "My Bookings" : "Customer Login"}
+            </Button>
+          </NavLink>
+          {isAuthenticated ? (
+            <button
+              type="button"
+              onClick={() => void logout()}
+              className="hidden rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground md:inline-flex dark:hover:bg-[#2b2016]"
+            >
+              Logout
+            </button>
+          ) : null}
           <NavLink to="/about" className="hidden md:inline-flex">
             <Button
               size="sm"
@@ -246,64 +266,138 @@ export default function AppAppBar() {
         </div>
       </div>
       {mobileMenuOpen ? (
-        <div className="border-t border-[#d8c6ae] px-4 py-3 md:hidden dark:border-[#5f4938]">
-          <div className="space-y-2 text-sm">
-            <button
-              type="button"
-              onClick={() => setMobileCoursesOpen((prev) => !prev)}
-              className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
-            >
-              <span>Courses</span>
-              <span>{mobileCoursesOpen ? "-" : "+"}</span>
-            </button>
-            {mobileCoursesOpen ? (
-              <div className="ml-2 space-y-1 border-l border-[#d8c6ae] pl-3 dark:border-[#5f4938]">
-                {courses.map((course) => (
-                  <Link
-                    key={course.slug}
-                    to={`/courses/${course.slug}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block rounded-md px-2 py-1 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
-                  >
-                    {course.title}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-            <button
-              type="button"
-              onClick={() => setMobileAboutOpen((prev) => !prev)}
-              className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
-            >
-              <span>About</span>
-              <span>{mobileAboutOpen ? "-" : "+"}</span>
-            </button>
-            {mobileAboutOpen ? (
-              <div className="ml-2 space-y-1 border-l border-[#d8c6ae] pl-3 dark:border-[#5f4938]">
-                {aboutLinks.map((link) => (
-                  <Link
-                    key={link.to}
-                    to={link.to}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block rounded-md px-2 py-1 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-            {links.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
+        <>
+          <button
+            type="button"
+            aria-label="Close menu overlay"
+            className="fixed inset-0 z-40 bg-black/35 md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div className="fixed inset-x-3 top-[5.9rem] z-50 max-h-[calc(100vh-7.2rem)] overflow-y-auto rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-3 shadow-2xl md:hidden dark:border-[#5f4938] dark:bg-[#21180f]">
+            <div className="mb-2 flex items-center justify-between border-b border-[#e8d9c4] pb-2 dark:border-[#3d2f24]">
+              <p className="text-sm font-semibold">Menu</p>
+              <button
+                type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block rounded-md px-2 py-2 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+                className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
               >
-                {link.label}
-              </NavLink>
-            ))}
+                Close
+              </button>
+            </div>
+
+            <div className="space-y-2 text-sm">
+              <button
+                type="button"
+                onClick={() => setMobileCoursesOpen((prev) => !prev)}
+                className="flex min-h-11 w-full items-center justify-between rounded-md px-3 py-2 text-left text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+              >
+                <span className="font-medium">Courses</span>
+                <span>{mobileCoursesOpen ? "-" : "+"}</span>
+              </button>
+              {mobileCoursesOpen ? (
+                <div className="ml-2 space-y-1 border-l border-[#d8c6ae] pl-3 dark:border-[#5f4938]">
+                  {courses.map((course) => (
+                    <Link
+                      key={course.slug}
+                      to={`/courses/${course.slug}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block rounded-md px-3 py-2 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+                    >
+                      {course.title}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+
+              <button
+                type="button"
+                onClick={() => setMobileAboutOpen((prev) => !prev)}
+                className="flex min-h-11 w-full items-center justify-between rounded-md px-3 py-2 text-left text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+              >
+                <span className="font-medium">About</span>
+                <span>{mobileAboutOpen ? "-" : "+"}</span>
+              </button>
+              {mobileAboutOpen ? (
+                <div className="ml-2 space-y-1 border-l border-[#d8c6ae] pl-3 dark:border-[#5f4938]">
+                  {aboutLinks.map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block rounded-md px-3 py-2 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+
+              {links.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block min-h-11 rounded-md px-3 py-2 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+
+              <div className="mt-2 flex flex-wrap gap-2 border-t border-[#e8d9c4] pt-3 dark:border-[#3d2f24]">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md px-2 py-1 text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:hover:bg-[#2b2016]"
+                  >
+                    <SocialIcon name={social.name} />
+                    {social.name}
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full bg-[#8e5a3a] text-white hover:bg-[#754529] dark:bg-[#b17752] dark:hover:bg-[#9a6545]">
+                    Inquire Now
+                  </Button>
+                </Link>
+                <Link to="/admissions" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full">
+                    Apply Now
+                  </Button>
+                </Link>
+                <Link
+                  to={
+                    isAuthenticated ? "/customer/dashboard" : "/customer/login"
+                  }
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="sm:col-span-2"
+                >
+                  <Button variant="outline" className="w-full">
+                    {isAuthenticated
+                      ? `My Bookings (${session?.name ?? "User"})`
+                      : "Customer Login"}
+                  </Button>
+                </Link>
+                {isAuthenticated ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="sm:col-span-2 rounded-md border border-[#d8c6ae] px-3 py-2 text-sm text-muted-foreground hover:bg-[#f0e1cc] hover:text-foreground dark:border-[#5f4938] dark:hover:bg-[#2b2016]"
+                  >
+                    Logout
+                  </button>
+                ) : null}
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       ) : null}
     </header>
   );

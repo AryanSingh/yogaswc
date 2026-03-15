@@ -24,7 +24,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[#d8c6ae] bg-[#f6efe4] text-[#2f2920] dark:border-[#4f3f30] dark:bg-[#16110d] dark:text-[#f2e8d6]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3 md:px-6">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3 md:px-6 md:py-12">
         <div>
           <div className="flex items-center gap-2 font-semibold">
             <SitemarkIcon className="h-8 w-8 text-[#8e5a3a] dark:text-[#d3a57c]" />
@@ -72,7 +72,7 @@ export default function Footer() {
           <p className="text-sm font-medium text-[#3b2a1d] dark:text-[#f0dcc7]">
             Receive course details
           </p>
-          <form onSubmit={handleSubmit} className="mt-3 flex gap-2">
+          <form onSubmit={handleSubmit} className="mt-3 grid gap-2 sm:flex">
             <Input
               type="email"
               value={email}
@@ -80,7 +80,7 @@ export default function Footer() {
               placeholder="you@example.com"
               className="border-[#cab39a] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
             />
-            <Button className="bg-[#8e5a3a] text-white hover:bg-[#754529] dark:bg-[#b17752] dark:hover:bg-[#9a6545]">
+            <Button className="w-full bg-[#8e5a3a] text-white hover:bg-[#754529] sm:w-auto dark:bg-[#b17752] dark:hover:bg-[#9a6545]">
               Send
             </Button>
           </form>

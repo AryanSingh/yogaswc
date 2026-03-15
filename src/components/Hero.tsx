@@ -57,39 +57,39 @@ export default function Hero() {
       />
 
       <div
-        className="relative mx-auto max-w-6xl px-4 py-24 text-white md:px-6 md:py-32"
+        className="relative mx-auto max-w-6xl px-4 py-16 text-white sm:py-20 md:px-6 md:py-28"
         style={{ transform: `translate3d(0, ${parallaxY * -0.12}px, 0)` }}
       >
-        <Badge className="mb-5 rounded-full bg-[#d3a57c] px-4 py-1 text-xs tracking-[0.16em] text-[#2a1d14] uppercase">
+        <Badge className="mb-4 rounded-full bg-[#d3a57c] px-3 py-1 text-[10px] tracking-[0.16em] text-[#2a1d14] uppercase sm:mb-5 sm:px-4 sm:text-xs">
           Yoga Teacher Training in Goa
         </Badge>
-        <h1 className="max-w-3xl text-4xl leading-tight font-semibold md:text-6xl md:leading-[1.12]">
+        <h1 className="max-w-3xl text-3xl leading-tight font-semibold sm:text-4xl md:text-6xl md:leading-[1.12]">
           Deepen your practice at Agonda Beach with authentic yoga education.
         </h1>
-        <p className="mt-5 max-w-2xl text-base text-white/85 md:text-lg">
+        <p className="mt-4 max-w-2xl text-sm text-white/90 sm:mt-5 sm:text-base md:text-lg">
           Join immersive 100-hour and 200-hour programs guided by experienced
           teachers, daily asana practice, pranayama, meditation, and yogic
           philosophy in Goa.
         </p>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link to="/schedule">
-            <Button className="bg-[#8e5a3a] px-7 text-white hover:bg-[#754529]">
+        <div className="mt-6 grid gap-3 sm:mt-8 sm:flex sm:flex-row">
+          <Link to="/schedule" className="w-full sm:w-auto">
+            <Button className="w-full bg-[#8e5a3a] px-7 text-white hover:bg-[#754529] sm:w-auto">
               View Upcoming Batches
             </Button>
           </Link>
-          <Link to="/admissions">
+          <Link to="/admissions" className="w-full sm:w-auto">
             <Button
               variant="outline"
-              className="border-white/40 bg-white/5 px-7 text-white hover:bg-white/10"
+              className="w-full border-white/40 bg-white/5 px-7 text-white hover:bg-white/10 sm:w-auto"
             >
               Request Prospectus
             </Button>
           </Link>
-          <Link to="/about">
+          <Link to="/about" className="w-full sm:w-auto">
             <Button
               variant="outline"
-              className="border-white/40 bg-white/5 px-7 text-white hover:bg-white/10"
+              className="w-full border-white/40 bg-white/5 px-7 text-white hover:bg-white/10 sm:w-auto"
             >
               About Us
             </Button>
@@ -98,7 +98,7 @@ export default function Hero() {
 
         <form
           onSubmit={handleSubmit}
-          className="mt-8 grid max-w-xl gap-3 rounded-xl border border-white/20 bg-black/30 p-4 backdrop-blur sm:grid-cols-[1fr_auto]"
+          className="mt-6 grid max-w-xl gap-3 rounded-xl border border-white/20 bg-black/35 p-4 backdrop-blur sm:mt-8 sm:grid-cols-[1fr_auto]"
         >
           <Input
             type="email"
@@ -108,7 +108,7 @@ export default function Hero() {
             placeholder="Your email for course details"
             className="border-white/20 bg-white/10 text-white placeholder:text-white/60"
           />
-          <Button className="bg-[#b17752] text-white hover:bg-[#9a6545]">
+          <Button className="w-full bg-[#b17752] text-white hover:bg-[#9a6545] sm:w-auto">
             Request Brochure
           </Button>
         </form>
