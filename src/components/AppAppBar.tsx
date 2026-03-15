@@ -242,7 +242,7 @@ export default function AppAppBar() {
             className="hidden md:inline-flex"
           >
             <Button size="sm" variant="outline">
-              {isAuthenticated ? "My Bookings" : "Customer Login"}
+              {isAuthenticated ? "My Bookings" : "Login"}
             </Button>
           </NavLink>
           {isAuthenticated ? (
@@ -254,15 +254,6 @@ export default function AppAppBar() {
               Logout
             </button>
           ) : null}
-          <NavLink to="/about" className="hidden md:inline-flex">
-            <Button
-              size="sm"
-              variant="outline"
-              className="border-[#8e5a3a] text-[#8e5a3a] hover:bg-[#f0e1cc] dark:border-[#d3a57c] dark:text-[#d3a57c] dark:hover:bg-[#2b2016]"
-            >
-              About Us
-            </Button>
-          </NavLink>
         </div>
       </div>
       {mobileMenuOpen ? (
@@ -379,7 +370,7 @@ export default function AppAppBar() {
                   <Button variant="outline" className="w-full">
                     {isAuthenticated
                       ? `My Bookings (${session?.name ?? "User"})`
-                      : "Customer Login"}
+                      : "Login"}
                   </Button>
                 </Link>
                 {isAuthenticated ? (

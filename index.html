@@ -5,6 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>yogaswc</title>
+    <script>
+      (function () {
+        // Migrate legacy hash routes (/#/foo) to clean paths (/foo).
+        if (window.location.hash.startsWith("#/")) {
+          var cleanPath = window.location.hash.slice(1);
+          var normalizedPath =
+            cleanPath === "/" ? window.location.pathname :
+            window.location.pathname.replace(/\/$/, "") + cleanPath;
+          window.history.replaceState(null, "", normalizedPath + window.location.search);
+        }
+
+        // Restore SPA route redirected via 404.html fallback on GitHub Pages.
+        var redirect = window.location.search;
+        if (!redirect.startsWith("?/%2F") && !redirect.startsWith("?/")) {
+          return;
+        }
+        var decoded = redirect.slice(1).replace(/~and~/g, "&").replace(/^\//, "");
+        window.history.replaceState(null, "", window.location.pathname + (decoded || "") + window.location.hash);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

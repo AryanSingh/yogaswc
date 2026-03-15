@@ -5,7 +5,7 @@ import Checker from "vite-plugin-checker";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/yogaswc/",
   plugins: [tailwindcss(), react(), Checker({ typescript: true })],
   server: {
     port: 7777,

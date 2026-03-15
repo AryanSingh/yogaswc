@@ -57,7 +57,7 @@ export const courses: Course[] = [
     level: "Beginner to Intermediate",
     location: "Agonda Beach, Goa, India",
     fee: "900 Euros with accommodation and food / 600 Euros without accommodation and food",
-    image: `${uploadsBase}/2024/09/slide-1-1.jpeg`,
+    image: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
     sourceUrl: "https://purnamyogashala.com/index.html%3Fp=37.html",
     highlights: [
       "Yoga Alliance registered school format",

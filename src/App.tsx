@@ -23,7 +23,7 @@ import CustomerDashboardPage from "./pages/CustomerDashboardPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <CustomerAuthProvider>
         <Routes>
           <Route element={<SiteLayout />}>

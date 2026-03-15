@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { Button } from "../components/ui/button";
@@ -10,9 +11,25 @@ import {
 import { upcomingScheduleItems } from "../data/courseSchedule";
 import { courses } from "../data/siteContent";
 
+type DetailTabKey =
+  | "curriculum"
+  | "daily"
+  | "includes"
+  | "excludes"
+  | "batches";
+
+const detailTabs: { key: DetailTabKey; label: string }[] = [
+  { key: "curriculum", label: "Curriculum" },
+  { key: "daily", label: "Daily Flow" },
+  { key: "includes", label: "Includes" },
+  { key: "excludes", label: "Excludes" },
+  { key: "batches", label: "Batches" },
+];
+
 export default function CourseDetailPage() {
   const { slug } = useParams();
   const course = courses.find((item) => item.slug === slug);
+  const [activeTab, setActiveTab] = useState<DetailTabKey>("curriculum");
 
   if (!course) {
     return (
@@ -31,6 +48,74 @@ export default function CourseDetailPage() {
   const batches = upcomingScheduleItems.filter(
     (item) => item.courseSlug === course.slug,
   );
+
+  const tabContent = useMemo(() => {
+    if (activeTab === "daily") {
+      return (
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          {course.dailySchedule.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    if (activeTab === "includes") {
+      return (
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          {course.inclusions.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    if (activeTab === "excludes") {
+      return (
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          {course.exclusions.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    if (activeTab === "batches") {
+      return batches.length === 0 ? (
+        <p className="text-sm text-muted-foreground">
+          Upcoming dates are shared by admissions on request.
+        </p>
+      ) : (
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          {batches.map((item) => (
+            <li key={`${item.course}-${item.startDate}`}>
+              {item.startDate} - {item.endDate} ({item.location})
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    return (
+      <ul className="space-y-2 text-sm text-muted-foreground">
+        {course.modules.map((item) => (
+          <li key={item} className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
+  }, [activeTab, batches, course]);
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
@@ -62,87 +147,25 @@ export default function CourseDetailPage() {
 
           <Card className="mt-8 border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]">
             <CardHeader>
-              <CardTitle>What You Will Study</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {course.modules.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
-                    {item}
-                  </li>
+              <CardTitle>Program Details</CardTitle>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {detailTabs.map((tab) => (
+                  <button
+                    key={tab.key}
+                    type="button"
+                    onClick={() => setActiveTab(tab.key)}
+                    className={`rounded-md px-3 py-1.5 text-xs font-medium transition ${
+                      activeTab === tab.key
+                        ? "bg-[#8e5a3a] text-white"
+                        : "border border-[#c9af95] text-muted-foreground hover:bg-[#f1e2cd] dark:border-[#6c5341] dark:hover:bg-[#2a1f15]"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
                 ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6 border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]">
-            <CardHeader>
-              <CardTitle>Daily Training Flow</CardTitle>
+              </div>
             </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {course.dailySchedule.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6 border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]">
-            <CardHeader>
-              <CardTitle>Course Fee Includes</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {course.inclusions.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6 border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]">
-            <CardHeader>
-              <CardTitle>Not Included</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {course.exclusions.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#9a6a49]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6 border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]">
-            <CardHeader>
-              <CardTitle>Upcoming Batches</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {batches.length === 0 ? (
-                <p className="text-sm text-muted-foreground">
-                  Upcoming dates are shared by admissions on request.
-                </p>
-              ) : (
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {batches.map((item) => (
-                    <li key={`${item.course}-${item.startDate}`}>
-                      {item.startDate} - {item.endDate} ({item.location})
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </CardContent>
+            <CardContent>{tabContent}</CardContent>
           </Card>
         </div>
 
@@ -161,19 +184,6 @@ export default function CourseDetailPage() {
               <p>
                 <span className="font-medium">Fee:</span> {course.fee}
               </p>
-              {course.sourceUrl ? (
-                <p className="text-xs text-muted-foreground">
-                  Source:{" "}
-                  <a
-                    href={course.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline"
-                  >
-                    {course.sourceUrl}
-                  </a>
-                </p>
-              ) : null}
               <ul className="space-y-2 pt-2 text-muted-foreground">
                 {course.highlights.map((item) => (
                   <li key={item} className="flex items-start gap-2">
