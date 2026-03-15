@@ -23,8 +23,8 @@ export default function Pricing() {
             key={course.slug}
             className={
               index === 0
-                ? "border-[#a5744f] bg-[#fff7ee] dark:border-[#b3815e] dark:bg-[#2a1f15]"
-                : "border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
+                ? "yoga-card-lift yoga-soft-glow border-[#a5744f] bg-[#fff7ee] dark:border-[#b3815e] dark:bg-[#2a1f15]"
+                : "yoga-card-lift yoga-soft-glow border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
             }
           >
             <CardHeader>

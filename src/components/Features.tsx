@@ -25,7 +25,7 @@ export default function Features() {
         {courses.map((course) => (
           <Card
             key={course.slug}
-            className="border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
+            className="yoga-card-lift yoga-soft-glow border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
           >
             <CardHeader>
               <p className="text-xs uppercase tracking-[0.14em] text-[#8e5a3a] dark:text-[#d3a57c]">

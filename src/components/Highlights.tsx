@@ -21,7 +21,7 @@ export default function Highlights() {
         {highlights.map((item) => (
           <Card
             key={item.title}
-            className="border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
+            className="yoga-card-lift yoga-soft-glow border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
           >
             <CardHeader>
               <CardTitle className="text-xl">{item.title}</CardTitle>

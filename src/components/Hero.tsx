@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,6 +12,25 @@ export default function Hero() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [parallaxY, setParallaxY] = useState(0);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) {
+      return;
+    }
+
+    const onScroll = () => {
+      const next = Math.min(window.scrollY * 0.25, 140);
+      setParallaxY(next);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,11 +48,18 @@ export default function Hero() {
       <img
         src={siteAssets.hero}
         alt="Yoga teacher training in India"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover will-change-transform"
+        style={{ transform: `translate3d(0, ${parallaxY}px, 0) scale(1.08)` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/30" />
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/30 will-change-transform"
+        style={{ transform: `translate3d(0, ${parallaxY * 0.5}px, 0)` }}
+      />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-24 text-white md:px-6 md:py-32">
+      <div
+        className="relative mx-auto max-w-6xl px-4 py-24 text-white md:px-6 md:py-32"
+        style={{ transform: `translate3d(0, ${parallaxY * -0.12}px, 0)` }}
+      >
         <Badge className="mb-5 rounded-full bg-[#d3a57c] px-4 py-1 text-xs tracking-[0.16em] text-[#2a1d14] uppercase">
           Yoga Teacher Training in Goa
         </Badge>

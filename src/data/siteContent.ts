@@ -28,6 +28,17 @@ export type AccommodationFeature = {
   image: string;
 };
 
+export type SocialLink = {
+  name: "Facebook" | "Instagram" | "YouTube" | "LinkedIn";
+  href: string;
+};
+
+export type ImpactStat = {
+  value: number;
+  suffix: string;
+  label: string;
+};
+
 const uploadsBase = "/purnamyogashala.com/wp-content/uploads";
 
 export const siteAssets = {
@@ -261,6 +272,34 @@ export const testimonials = [
     quote:
       "Powerful, thoughtful classes with clear intention and authentic guidance in Agonda, Goa.",
   },
+];
+
+export const socialLinks: SocialLink[] = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/purnamyogashala/",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/purnamyogashala/",
+  },
+  {
+    name: "YouTube",
+    href: "https://youtube.com/@purnamyogaschoolIndia",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/purnam-yoga-school/",
+  },
+];
+
+export const impactStats: ImpactStat[] = [
+  { value: 2500, suffix: "+", label: "Happy Graduates" },
+  { value: 6, suffix: "+", label: "Trainers" },
+  { value: 20, suffix: "+", label: "Years Experience" },
+  { value: 2, suffix: "+", label: "Yoga Alliance Certification" },
+  { value: 3, suffix: "+", label: "Courses" },
+  { value: 2, suffix: "+", label: "Locations" },
 ];
 
 // Schedule data moved to src/data/courseSchedule.ts for easy manual updates.

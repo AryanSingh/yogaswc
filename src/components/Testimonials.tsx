@@ -20,7 +20,7 @@ export default function Testimonials() {
         {testimonials.map((item) => (
           <Card
             key={item.name}
-            className="border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
+            className="yoga-card-lift yoga-soft-glow border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"
           >
             <CardHeader>
               <CardTitle className="text-lg">{item.name}</CardTitle>
