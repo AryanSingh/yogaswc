@@ -106,15 +106,24 @@
     background-size: 12px 12px;
   }
 
-  .yoga-lotus-bg {
-    background-image: url("/assets/lotus-bg.png");
-    background-position: bottom 10% right 5%;
+  .yoga-tree-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/assets/tree-bg-v2.png");
+    background-position: center bottom;
     background-repeat: no-repeat;
-    background-size: 600px;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    mix-blend-mode: multiply; /* Makes white background transparent in light mode */
   }
 
-  .dark .yoga-lotus-bg {
-    filter: invert(1) brightness(1.2) contrast(1.1);
+  .dark .yoga-tree-bg {
+    filter: invert(0.9) brightness(1.5) contrast(0.8);
+    mix-blend-mode: screen; /* Appropriate for dark mode with inverted line art */
   }
 
   .reveal-on-scroll {
