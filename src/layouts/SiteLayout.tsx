@@ -17,7 +17,7 @@ export default function SiteLayout() {
       {/* Global Tree Background Watermark */}
       <div 
         id="global-tree-background"
-        className="yoga-tree-bg pointer-events-none fixed inset-0 z-0 opacity-[0.25] dark:opacity-[0.15]" 
+        className="yoga-tree-bg pointer-events-none fixed inset-0 z-0 opacity-[0.12] dark:opacity-[0.08]" 
       />
       <AppAppBar />
       <main className="relative z-10 pb-16 md:pb-0">

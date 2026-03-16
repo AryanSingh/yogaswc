@@ -112,10 +112,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("/assets/tree-bg-v2.png");
-    background-position: center bottom;
+    background-image: url("assets/tree-bg-wide.png");
+    background-position: center top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
+    image-rendering: -webkit-optimize-contrast; /* Improves sharpness on some browsers */
     width: 100vw;
     height: 100vh;
     mix-blend-mode: multiply; /* Makes white background transparent in light mode */
