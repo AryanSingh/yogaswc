@@ -1,9 +1,22 @@
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import { upcomingScheduleItems } from "../data/courseSchedule";
 import { Button } from "../components/ui/button";
+import { cn } from "../lib/utils";
 
 export default function SchedulePage() {
+  const courses = useMemo(() => {
+    const unique = Array.from(new Set(upcomingScheduleItems.map((i) => i.course)));
+    return unique.sort();
+  }, []);
+
+  const [activeTab, setActiveTab] = useState(courses[0] || "");
+
+  const filteredItems = useMemo(() => {
+    return upcomingScheduleItems.filter((item) => item.course === activeTab);
+  }, [activeTab]);
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
       <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
@@ -16,9 +29,27 @@ export default function SchedulePage() {
         Updated intake windows for teacher trainings and retreat formats.
       </p>
 
+      {/* Tabs */}
+      <div className="mt-8 flex flex-wrap gap-2 border-b border-[#d8c6ae] pb-4 dark:border-[#5f4938]">
+        {courses.map((course) => (
+          <button
+            key={course}
+            onClick={() => setActiveTab(course)}
+            className={cn(
+              "px-4 py-2 text-sm font-medium transition-all rounded-full",
+              activeTab === course
+                ? "bg-[#8e5a3a] text-white"
+                : "text-muted-foreground hover:bg-[#f3e8d9] dark:hover:bg-[#2a1f15]"
+            )}
+          >
+            {course}
+          </button>
+        ))}
+      </div>
+
       <div className="mt-8 md:hidden">
         <div className="space-y-3">
-          {upcomingScheduleItems.map((item) => (
+          {filteredItems.map((item) => (
             <article
               key={`${item.course}-${item.startDate}`}
               className="rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-4 dark:border-[#5f4938] dark:bg-[#21180f]"
@@ -40,6 +71,9 @@ export default function SchedulePage() {
               </div>
             </article>
           ))}
+          {filteredItems.length === 0 && (
+            <p className="text-sm text-muted-foreground">No upcoming batches for this course.</p>
+          )}
         </div>
       </div>
 
@@ -55,7 +89,7 @@ export default function SchedulePage() {
             </tr>
           </thead>
           <tbody>
-            {upcomingScheduleItems.map((item) => (
+            {filteredItems.map((item) => (
               <tr
                 key={`${item.course}-${item.startDate}`}
                 className="border-b border-[#eadfce] dark:border-[#473727]"
@@ -64,9 +98,18 @@ export default function SchedulePage() {
                 <td className="px-4 py-3">{item.location}</td>
                 <td className="px-4 py-3">{item.startDate}</td>
                 <td className="px-4 py-3">{item.endDate}</td>
-                <td className="px-4 py-3">{item.status}</td>
+                <td className="px-4 py-3 font-medium text-[#8e5a3a] dark:text-[#d3a57c]">
+                  {item.status}
+                </td>
               </tr>
             ))}
+            {filteredItems.length === 0 && (
+              <tr>
+                <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
+                  No upcoming batches for this course.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

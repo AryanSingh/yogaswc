@@ -14,6 +14,7 @@ export default function SiteLayout() {
       <div className="pointer-events-none absolute inset-0 -z-10 yoga-grain opacity-40 dark:opacity-20" />
       <div className="pointer-events-none absolute -top-24 -left-24 -z-10 h-72 w-72 rounded-full bg-[#d9b996]/30 blur-3xl dark:bg-[#8e5a3a]/20" />
       <div className="pointer-events-none absolute -right-24 top-48 -z-10 h-72 w-72 rounded-full bg-[#efddca]/40 blur-3xl dark:bg-[#6f4630]/20" />
+      <div className="yoga-lotus-bg pointer-events-none fixed inset-0 -z-10 opacity-[0.18] mix-blend-multiply dark:opacity-[0.12] dark:mix-blend-screen" />
       <AppAppBar />
       <main className="relative z-10 pb-16 md:pb-0">
         <Outlet />

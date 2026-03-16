@@ -1,21 +1,16 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { useCustomerAuth } from "../context/useCustomerAuth";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 
-type LoginLocationState = {
-  from?: string;
-};
-
-export default function CustomerLoginPage() {
-  const { isAuthenticated, login, isSupabaseConfigured } = useCustomerAuth();
+export default function CustomerSignUpPage() {
+  const { isAuthenticated, signUp, isSupabaseConfigured } = useCustomerAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state as LoginLocationState | null;
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,15 +25,15 @@ export default function CustomerLoginPage() {
     setError("");
     setLoading(true);
 
-    const ok = await login(email, password);
+    const result = await signUp(email, password, name);
     setLoading(false);
 
-    if (!ok) {
-      setError("Invalid email or password.");
+    if (!result.ok) {
+      setError(result.error || "Failed to create account.");
       return;
     }
 
-    navigate(state?.from || "/customer/dashboard", { replace: true });
+    navigate("/customer/dashboard", { replace: true });
   };
 
   return (
@@ -46,9 +41,9 @@ export default function CustomerLoginPage() {
       <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
         Customer Portal
       </p>
-      <h1 className="mt-2 text-3xl font-semibold tracking-tight">Login</h1>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight">Create Account</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        Access your bookings and payment history.
+        Join our yogashala to track your practice and bookings.
       </p>
 
       {!isSupabaseConfigured ? (
@@ -63,6 +58,12 @@ export default function CustomerLoginPage() {
         className="mt-6 grid gap-3 rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-5 dark:border-[#5f4938] dark:bg-[#21180f]"
       >
         <Input
+          required
+          placeholder="Full Name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        <Input
           type="email"
           required
           placeholder="Email"
@@ -72,6 +73,7 @@ export default function CustomerLoginPage() {
         <Input
           type="password"
           required
+          minLength={6}
           placeholder="Password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
@@ -81,7 +83,7 @@ export default function CustomerLoginPage() {
           disabled={loading || !isSupabaseConfigured}
           className="bg-[#8e5a3a] text-white hover:bg-[#754529] dark:bg-[#b17752] dark:hover:bg-[#9a6545]"
         >
-          {loading ? "Signing in..." : "Sign In"}
+          {loading ? "Creating account..." : "Sign Up"}
         </Button>
         {error ? (
           <p className="text-sm text-red-600 dark:text-red-300">{error}</p>
@@ -89,18 +91,11 @@ export default function CustomerLoginPage() {
       </form>
 
       <p className="mt-4 text-sm text-muted-foreground">
-        Don't have an account?{" "}
-        <Link to="/customer/signup" className="text-[#8e5a3a] underline">
-          Sign up here
+        Already have an account?{" "}
+        <Link to="/customer/login" className="text-[#8e5a3a] underline">
+          Login here
         </Link>
       </p>
-
-      <Link
-        to="/contact"
-        className="mt-4 inline-block text-sm text-[#8e5a3a] underline"
-      >
-        Need help? Contact admissions
-      </Link>
     </section>
   );
 }

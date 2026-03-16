@@ -8,6 +8,7 @@ export type CustomerAuthContextValue = {
   isInitializing: boolean;
   isSupabaseConfigured: boolean;
   login: (email: string, password: string) => Promise<boolean>;
+  signUp: (email: string, password: string, name: string) => Promise<{ ok: boolean; error?: string }>;
   logout: () => Promise<void>;
 };
 

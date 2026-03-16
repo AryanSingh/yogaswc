@@ -106,6 +106,17 @@
     background-size: 12px 12px;
   }
 
+  .yoga-lotus-bg {
+    background-image: url("/assets/lotus-bg.png");
+    background-position: bottom 10% right 5%;
+    background-repeat: no-repeat;
+    background-size: 600px;
+  }
+
+  .dark .yoga-lotus-bg {
+    filter: invert(1) brightness(1.2) contrast(1.1);
+  }
+
   .reveal-on-scroll {
     opacity: 0;
     transform: translate3d(0, 26px, 0) scale(0.985);

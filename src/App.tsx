@@ -19,6 +19,7 @@ import SchedulePage from "./pages/SchedulePage";
 import AdmissionsPage from "./pages/AdmissionsPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import CustomerLoginPage from "./pages/CustomerLoginPage";
+import CustomerSignUpPage from "./pages/CustomerSignUpPage";
 import CustomerDashboardPage from "./pages/CustomerDashboardPage";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/customer/login" element={<CustomerLoginPage />} />
+            <Route path="/customer/signup" element={<CustomerSignUpPage />} />
             <Route
               path="/customer/dashboard"
               element={

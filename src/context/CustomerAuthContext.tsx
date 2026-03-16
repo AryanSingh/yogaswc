@@ -82,6 +82,35 @@ export function CustomerAuthProvider({
     return true;
   }, []);
 
+  const signUp = useCallback(
+    async (email: string, password: string, name: string) => {
+      if (!supabase) {
+        return { ok: false, error: "Supabase not configured" };
+      }
+
+      const { data, error } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: {
+          data: {
+            full_name: name.trim(),
+          },
+        },
+      });
+
+      if (error) {
+        return { ok: false, error: error.message };
+      }
+
+      if (data.user) {
+        setSession(normalizeSessionFromAuthUser(data.user));
+      }
+
+      return { ok: true };
+    },
+    [],
+  );
+
   const logout = useCallback(async () => {
     if (supabase) {
       await supabase.auth.signOut();
@@ -96,9 +125,10 @@ export function CustomerAuthProvider({
       isInitializing,
       isSupabaseConfigured,
       login,
+      signUp,
       logout,
     }),
-    [session, isInitializing, login, logout],
+    [session, isInitializing, login, signUp, logout],
   );
 
   return (
