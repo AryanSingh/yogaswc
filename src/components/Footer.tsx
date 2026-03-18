@@ -28,7 +28,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-2 font-semibold">
             <SitemarkIcon className="h-8 w-8 text-[#8e5a3a] dark:text-[#d3a57c]" />
-            Purnam Yoga School
+            Purnam Yogashala
           </div>
           <p className="mt-3 text-sm text-[#6a5442] dark:text-[#d7c4ae]">
             Traditional yoga teacher training and retreats in Agonda Beach, Goa,
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-[#d8c6ae] py-4 text-center text-xs text-[#7b634f] dark:border-[#4f3f30] dark:text-[#c9b59e]">
-        Copyright {new Date().getFullYear()} Purnam Yoga School. All rights
+        Copyright {new Date().getFullYear()} Purnam Yogashala. All rights
         reserved.
       </div>
     </footer>

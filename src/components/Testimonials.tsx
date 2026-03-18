@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="mx-auto max-w-6xl px-4 pb-16 md:px-6">
+    <section id="testimonials" className="mx-auto max-w-6xl px-4 pt-20 pb-16 md:px-6">
       <div className="mb-8 max-w-2xl">
         <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
           Student Voices

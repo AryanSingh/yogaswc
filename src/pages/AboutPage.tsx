@@ -6,7 +6,7 @@ import { siteAssets } from "../data/siteContent";
 
 export default function AboutPage() {
   return (
-    <div className="py-8">
+    <div className="pt-8">
       <section className="mx-auto max-w-6xl px-4 md:px-6">
         <h1 className="text-4xl font-semibold tracking-tight">
           About Purnam Yoga Shala Goa
@@ -33,7 +33,7 @@ export default function AboutPage() {
             className="h-12 w-auto"
           />
         </div>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-6 mb-12 flex flex-col gap-3 sm:flex-row">
           <Link to="/about/philosophy">
             <Button variant="outline">Our Philosophy</Button>
           </Link>
@@ -47,9 +47,7 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
-      <div className="bg-[#fbf8f1] text-[#2f2920] dark:bg-[#17120d] dark:text-[#f2e8d6]">
-        <Highlights />
-      </div>
+      <Highlights />
     </div>
   );
 }

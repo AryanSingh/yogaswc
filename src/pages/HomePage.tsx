@@ -37,9 +37,11 @@ export default function HomePage() {
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(211,165,124,0.2),transparent_42%),radial-gradient(circle_at_10%_90%,rgba(142,90,58,0.12),transparent_45%)]" />
         <Highlights />
-        <Testimonials />
+        <div className="mt-12 md:mt-24">
+          <Testimonials />
+        </div>
       </div>
-      <div data-reveal data-reveal-delay="1">
+      <div data-reveal data-reveal-delay="1" className="mt-12 md:mt-24">
         <Pricing />
       </div>
       <div data-reveal data-reveal-delay="2">

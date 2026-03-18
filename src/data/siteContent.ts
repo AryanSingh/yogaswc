@@ -42,7 +42,7 @@ export type ImpactStat = {
 };
 
 export const siteAssets = {
-  hero: `${uploadsBase}/2024/11/yoga-teacher-training-india.jpg`,
+  hero: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
   goaHero: `${uploadsBase}/2025/01/purnam-goa.jpg`,
   logo: `${uploadsBase}/2024/07/logo-sign-2.png`,
   yogaAlliance: `${uploadsBase}/2024/07/YOGA-ALLIANCE-RYT-1.png`,
@@ -289,7 +289,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/purnam-yoga-school/",
+    href: "https://www.linkedin.com/in/purnam-yogashala/",
   },
 ];
 
