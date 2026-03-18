@@ -24,6 +24,9 @@ export default function ContactPage() {
     phone: "",
     course: "",
     month: "",
+    country: "",
+    roomPreference: "",
+    experience: "",
     message: "",
   });
 
@@ -45,6 +48,9 @@ export default function ContactPage() {
       phone: formData.phone,
       course: formData.course,
       month: formData.month,
+      country: formData.country,
+      roomPreference: formData.roomPreference,
+      experience: formData.experience,
       message: formData.message,
     });
 
@@ -59,6 +65,9 @@ export default function ContactPage() {
         phone: "",
         course: "",
         month: "",
+        country: "",
+        roomPreference: "",
+        experience: "",
         message: "",
       });
     }
@@ -150,6 +159,35 @@ export default function ContactPage() {
           <option value="October">October</option>
           <option value="November">November</option>
           <option value="December">December</option>
+        </Select>
+        <Input
+          placeholder="Country"
+          value={formData.country}
+          onChange={(event) =>
+            setFormData((prev) => ({ ...prev, country: event.target.value }))
+          }
+        />
+        <Select
+          value={formData.roomPreference}
+          onChange={(event) =>
+            setFormData((prev) => ({ ...prev, roomPreference: event.target.value }))
+          }
+        >
+          <option value="" disabled>Room preference</option>
+          <option value="Private Room">Private Room</option>
+          <option value="Shared - Twin">Shared Room (Twin)</option>
+          <option value="Shared - Triple">Shared Room (Triple)</option>
+        </Select>
+        <Select
+          value={formData.experience}
+          onChange={(event) =>
+            setFormData((prev) => ({ ...prev, experience: event.target.value }))
+          }
+        >
+          <option value="" disabled>Yoga experience</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
         </Select>
         <Input
           placeholder="Message"
