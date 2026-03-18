@@ -11,7 +11,7 @@ import { Button } from "./ui/button";
 
 export default function FAQ() {
   return (
-    <section id="faq" className="mx-auto max-w-4xl px-4 py-16 md:px-6">
+    <section id="faq" className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <p className="text-center text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
         Frequently Asked Questions
       </p>

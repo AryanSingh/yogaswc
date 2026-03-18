@@ -111,6 +111,24 @@ export default function AppAppBar() {
             <a href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`} className="hover:underline">
               {contactInfo.phone}
             </a>
+            <span aria-hidden="true" className="ml-2">|</span>
+            <div className="ml-2 flex items-center gap-1 overflow-hidden rounded-full border border-border/20 bg-background/20 p-0.5">
+              <button
+                onClick={() => changeFontSize(-0.1)}
+                className="px-2 text-[9px] font-bold hover:bg-background/40 transition"
+                title="Decrease font size"
+              >
+                A-
+              </button>
+              <div className="h-2 w-px bg-border/20" />
+              <button
+                onClick={() => changeFontSize(0.1)}
+                className="px-2 text-[12px] font-bold hover:bg-background/40 transition"
+                title="Increase font size"
+              >
+                A+
+              </button>
+            </div>
           </div>
           <div className="flex items-center gap-1">
             {socialLinks.map((social) => (
@@ -132,7 +150,7 @@ export default function AppAppBar() {
       <header className="sticky top-0 z-[70] border-b border-border/60 bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-4 md:h-28 md:px-6">
           <Link to="/" className="flex shrink-0 items-center gap-x-1.5 pr-2 md:pr-4">
-            <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border/20 md:h-16 md:w-16">
+            <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border/20 md:h-20 md:w-20">
               <img
                 src={logo}
                 alt="Purnam Yogashala"
@@ -186,23 +204,6 @@ export default function AppAppBar() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <div className="mr-2 hidden md:flex items-center gap-1 overflow-hidden rounded-full border border-border/40 bg-background/50 p-0.5">
-              <button
-                onClick={() => changeFontSize(-0.1)}
-                className="px-2 text-[10px] font-bold hover:bg-accent transition"
-                title="Decrease font size"
-              >
-                A-
-              </button>
-              <div className="h-3 w-px bg-border/40" />
-              <button
-                onClick={() => changeFontSize(0.1)}
-                className="px-2 text-[14px] font-bold hover:bg-accent transition"
-                title="Increase font size"
-              >
-                A+
-              </button>
-            </div>
             <button
               type="button"
               onClick={toggleTheme}

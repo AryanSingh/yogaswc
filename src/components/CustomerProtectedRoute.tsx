@@ -12,7 +12,7 @@ export default function CustomerProtectedRoute({
 
   if (isInitializing) {
     return (
-      <section className="mx-auto max-w-4xl px-4 py-16 text-sm text-muted-foreground md:px-6">
+      <section className="mx-auto max-w-5xl px-4 py-16 text-sm text-muted-foreground md:px-6">
         Loading your account...
       </section>
     );

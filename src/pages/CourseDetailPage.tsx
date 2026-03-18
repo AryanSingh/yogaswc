@@ -33,7 +33,7 @@ export default function CourseDetailPage() {
 
   if (!course) {
     return (
-      <section className="mx-auto max-w-4xl px-4 py-16 md:px-6">
+      <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
         <h1 className="text-3xl font-semibold">Course Not Found</h1>
         <p className="mt-3 text-muted-foreground">
           The requested course does not exist. Please check available programs.

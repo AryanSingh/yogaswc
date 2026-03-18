@@ -6,6 +6,7 @@ import { contactInfo } from "../data/siteContent";
 import { submitInquiry } from "../services/formSubmission";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+import { Select } from "../components/ui/select";
 
 type ContactLocationState = {
   email?: string;
@@ -16,6 +17,7 @@ export default function ContactPage() {
   const state = location.state as ContactLocationState | null;
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,6 +35,9 @@ export default function ContactPage() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(false);
+
     const result = await submitInquiry({
       formType: "contact-inquiry",
       name: formData.name,
@@ -43,6 +48,7 @@ export default function ContactPage() {
       message: formData.message,
     });
 
+    setIsSubmitting(false);
     setSubmitted(result.ok);
     setSubmitError(!result.ok);
 
@@ -59,7 +65,7 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="mx-auto max-w-4xl px-4 py-16 md:px-6">
+    <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <h1 className="text-4xl font-semibold tracking-tight">
         Contact & Admissions
       </h1>
@@ -114,21 +120,37 @@ export default function ContactPage() {
             setFormData((prev) => ({ ...prev, phone: event.target.value }))
           }
         />
-        <Input
+        <Select
           required
-          placeholder="Course of interest"
           value={formData.course}
           onChange={(event) =>
             setFormData((prev) => ({ ...prev, course: event.target.value }))
           }
-        />
-        <Input
-          placeholder="Preferred month"
+        >
+          <option value="" disabled>Course of interest</option>
+          <option value="100 TTC">100 TTC</option>
+          <option value="200 TTC">200 TTC</option>
+        </Select>
+        <Select
           value={formData.month}
           onChange={(event) =>
             setFormData((prev) => ({ ...prev, month: event.target.value }))
           }
-        />
+        >
+          <option value="" disabled>Preferred month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </Select>
         <Input
           placeholder="Message"
           value={formData.message}
@@ -136,8 +158,21 @@ export default function ContactPage() {
             setFormData((prev) => ({ ...prev, message: event.target.value }))
           }
         />
-        <Button className="w-full bg-[#8e5a3a] text-white hover:bg-[#754529] dark:bg-[#b17752] dark:hover:bg-[#9a6545]">
-          Submit Inquiry
+        <Button
+          disabled={isSubmitting}
+          className="w-full bg-[#8e5a3a] text-white hover:bg-[#754529] dark:bg-[#b17752] dark:hover:bg-[#9a6545]"
+        >
+          {isSubmitting ? (
+            <div className="flex items-center gap-2">
+              <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+              <span>Submitting...</span>
+            </div>
+          ) : (
+            "Submit Inquiry"
+          )}
         </Button>
         {submitted ? (
           <p className="text-sm text-[#6a4a33] dark:text-[#efddca]">
