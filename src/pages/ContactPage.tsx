@@ -18,6 +18,9 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaChallenge, setCaptchaChallenge] = useState({ a: 0, b: 0 });
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,10 +37,22 @@ export default function ContactPage() {
     if (state?.email) {
       setFormData((prev) => ({ ...prev, email: state.email ?? "" }));
     }
+    // Generate captcha
+    setCaptchaChallenge({
+      a: Math.floor(Math.random() * 10) + 1,
+      b: Math.floor(Math.random() * 10) + 1,
+    });
   }, [state?.email]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (parseInt(captchaAnswer) !== captchaChallenge.a + captchaChallenge.b) {
+      setCaptchaError(true);
+      return;
+    }
+
+    setCaptchaError(false);
     setIsSubmitting(true);
     setSubmitError(false);
 
@@ -189,6 +204,20 @@ export default function ContactPage() {
           <option value="Intermediate">Intermediate</option>
           <option value="Advanced">Advanced</option>
         </Select>
+        <div className="grid gap-2">
+          <label className="text-sm font-medium text-muted-foreground">
+            Solve this: {captchaChallenge.a} + {captchaChallenge.b} = ?
+          </label>
+          <Input
+            required
+            placeholder="Enter answer"
+            value={captchaAnswer}
+            onChange={(e) => setCaptchaAnswer(e.target.value)}
+          />
+        </div>
+        {captchaError && (
+          <p className="text-xs text-red-500">Incorrect answer. Please try again.</p>
+        )}
         <Input
           placeholder="Message"
           value={formData.message}

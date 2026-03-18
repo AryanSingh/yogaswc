@@ -98,6 +98,10 @@
   #root {
     @apply min-h-screen;
   }
+
+  a, button, [role="button"], select, .cursor-pointer {
+    cursor: pointer;
+  }
 }
 
 @layer utilities {

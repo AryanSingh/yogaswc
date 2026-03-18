@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+import ScrollToTop from "./components/ScrollToTop";
 import CustomerProtectedRoute from "./components/CustomerProtectedRoute";
 import { CustomerAuthProvider } from "./context/CustomerAuthContext";
 import SiteLayout from "./layouts/SiteLayout";
@@ -25,6 +26,7 @@ import CustomerDashboardPage from "./pages/CustomerDashboardPage";
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       <CustomerAuthProvider>
         <Routes>
           <Route element={<SiteLayout />}>

@@ -4,6 +4,7 @@ import AppAppBar from "../components/AppAppBar";
 import FloatingEnrollButton from "../components/FloatingEnrollButton";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
+import ConsentBanner from "../components/ConsentBanner";
 import { useRevealOnScroll } from "../lib/useRevealOnScroll";
 
 export default function SiteLayout() {
@@ -26,6 +27,7 @@ export default function SiteLayout() {
       <Footer />
       <FloatingEnrollButton />
       <WhatsAppFloat />
+      <ConsentBanner />
     </div>
   );
 }
