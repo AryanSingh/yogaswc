@@ -130,7 +130,7 @@ export default function AppAppBar() {
       </div>
 
       <header className="sticky top-0 z-[70] border-b border-border/60 bg-background/95 backdrop-blur">
-        <div className="mx-auto flex h-20 max-w-5xl items-center gap-4 px-4 md:h-28 md:px-6">
+        <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-4 md:h-28 md:px-6">
           <Link to="/" className="flex shrink-0 items-center gap-x-1.5 pr-2 md:pr-4">
             <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border/20 md:h-16 md:w-16">
               <img
@@ -139,12 +139,13 @@ export default function AppAppBar() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <p className="hidden md:block text-sm lg:text-lg font-bold leading-tight text-foreground whitespace-nowrap uppercase tracking-wider">
-              Purnam Yogashala
-            </p>
+            <div className="hidden md:flex flex-col text-[13px] lg:text-[16px] font-bold leading-[1.1] text-foreground uppercase tracking-wider">
+              <span>Purnam</span>
+              <span>Yogashala</span>
+            </div>
           </Link>
 
-          <nav className="hidden items-center gap-4 md:flex lg:gap-6 xl:gap-8 text-[13px] lg:text-[15px]">
+          <nav className="hidden items-center gap-3 md:flex lg:gap-4 xl:gap-6 text-[13px] lg:text-[15px]">
             <div className="group relative flex items-center h-full">
               <NavLink to="/courses" className={navLinkClass}>
                 Courses
@@ -161,7 +162,7 @@ export default function AppAppBar() {
                 ))}
               </div>
             </div>
-            <div className="group relative">
+            <div className="group relative flex items-center h-full">
               <NavLink to="/about" className={navLinkClass}>
                 About
               </NavLink>
@@ -184,7 +185,7 @@ export default function AppAppBar() {
             ))}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <div className="mr-2 hidden md:flex items-center gap-1 overflow-hidden rounded-full border border-border/40 bg-background/50 p-0.5">
               <button
                 onClick={() => changeFontSize(-0.1)}
