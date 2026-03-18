@@ -116,6 +116,7 @@ export default function ContactPage() {
       </div>
 
       <form
+        data-testid="contact-form"
         onSubmit={handleSubmit}
         className="mt-8 grid gap-4 rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-6 dark:border-[#5f4938] dark:bg-[#21180f]"
       >
