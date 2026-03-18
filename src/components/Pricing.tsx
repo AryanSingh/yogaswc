@@ -7,7 +7,7 @@ import { courses } from "../data/siteContent";
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+    <section id="pricing" className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <div className="mb-8 max-w-3xl">
         <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
           Course Fees (Euros)

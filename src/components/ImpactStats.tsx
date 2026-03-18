@@ -233,7 +233,7 @@ export default function ImpactStats() {
       ref={ref}
       className="border-y border-[#e8d8c3] bg-[#fffdfa]/95 text-[#2f2920] dark:border-[#4a3829] dark:bg-[#1a140f]/95 dark:text-[#f2e8d6]"
     >
-      <div className="mx-auto max-w-6xl px-2 py-1 md:px-0">
+      <div className="mx-auto max-w-5xl px-2 py-1 md:px-0">
         <div className="flex snap-x gap-2 overflow-x-auto pb-2 md:grid md:grid-cols-6 md:gap-0 md:overflow-visible md:pb-0 md:divide-x md:divide-[#f0e2cf] dark:md:divide-[#3f3024]">
           {impactStats.map((item, index) => (
             <div

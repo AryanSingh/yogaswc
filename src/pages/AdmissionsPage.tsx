@@ -42,7 +42,7 @@ export default function AdmissionsPage() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+    <div className="mx-auto max-w-5xl px-4 py-12 md:px-6">
       <div className="grid gap-8 md:grid-cols-2">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
@@ -122,6 +122,6 @@ export default function AdmissionsPage() {
           ) : null}
         </form>
       </div>
-    </section>
+    </div>
   );
 }

@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 export default function Highlights() {
   return (
-    <section id="about" className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+    <section id="about" className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <div className="mb-8 max-w-3xl">
         <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
           About The School

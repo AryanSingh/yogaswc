@@ -4,7 +4,7 @@ import { Button } from "../components/ui/button";
 
 export default function AboutCertificationPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+    <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
         About
       </p>

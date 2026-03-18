@@ -85,7 +85,7 @@ export default function CustomerDashboardPage() {
   );
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <section className="mx-auto max-w-5xl px-4 py-12 md:px-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">

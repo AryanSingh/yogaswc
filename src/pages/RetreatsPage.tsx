@@ -8,7 +8,7 @@ import { siteAssets } from "../data/siteContent";
 export default function RetreatsPage() {
   return (
     <div className="py-8">
-      <section className="mx-auto max-w-6xl px-4 md:px-6">
+      <section className="mx-auto max-w-5xl px-4 md:px-6">
         <h1 className="text-4xl font-semibold tracking-tight">
           Yoga & Meditation Retreats
         </h1>

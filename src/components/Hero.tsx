@@ -57,7 +57,7 @@ export default function Hero() {
       />
 
       <div
-        className="relative mx-auto max-w-6xl px-4 py-16 text-white sm:py-20 md:px-6 md:py-28"
+        className="relative mx-auto max-w-5xl px-4 py-16 text-white sm:py-20 md:px-6 md:py-28"
         style={{ transform: `translate3d(0, ${parallaxY * -0.12}px, 0)` }}
       >
         <Badge className="mb-4 rounded-full bg-[#d3a57c] px-3 py-1 text-[10px] tracking-[0.16em] text-[#2a1d14] uppercase sm:mb-5 sm:px-4 sm:text-xs">

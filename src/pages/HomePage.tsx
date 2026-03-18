@@ -50,7 +50,7 @@ export default function HomePage() {
       <section
         data-reveal
         data-reveal-delay="2"
-        className="mx-auto max-w-6xl px-4 pb-16 text-center md:px-6"
+        className="mx-auto max-w-5xl px-4 pb-16 text-center md:px-6"
       >
         <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
           Ready to begin your yoga journey in India?

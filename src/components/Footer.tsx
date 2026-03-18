@@ -24,7 +24,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[#d8c6ae] bg-[#f6efe4] text-[#2f2920] dark:border-[#4f3f30] dark:bg-[#16110d] dark:text-[#f2e8d6]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3 md:px-6 md:py-12">
+      <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 md:grid-cols-3 md:px-6 md:py-12">
         <div>
           <div className="flex items-center gap-2 font-semibold">
             <SitemarkIcon className="h-8 w-8 text-[#8e5a3a] dark:text-[#d3a57c]" />

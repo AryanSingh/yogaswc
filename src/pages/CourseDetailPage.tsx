@@ -118,7 +118,7 @@ export default function CourseDetailPage() {
   }, [activeTab, batches, course]);
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <section className="mx-auto max-w-5xl px-4 py-12 md:px-6">
       <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
         <div>
           <img
