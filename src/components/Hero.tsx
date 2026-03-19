@@ -3,12 +3,13 @@ import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { submitInquiry } from "../services/formSubmission";
-import { siteAssets } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 export default function Hero() {
+  const { siteAssets } = useCmsContent();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);

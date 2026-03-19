@@ -1,10 +1,11 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 
-import { blogPosts } from "../data/siteContent";
 import { Button } from "../components/ui/button";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export default function BlogDetailPage() {
   const { slug } = useParams();
+  const { blogPosts } = useCmsContent();
   const post = blogPosts.find((item) => item.slug === slug);
 
   if (!post) {

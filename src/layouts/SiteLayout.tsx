@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import AppAppBar from "../components/AppAppBar";
 import FloatingEnrollButton from "../components/FloatingEnrollButton";
 import Footer from "../components/Footer";
+import SeoManager from "../components/SeoManager";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import ConsentBanner from "../components/ConsentBanner";
 import { useRevealOnScroll } from "../lib/useRevealOnScroll";
@@ -20,6 +21,7 @@ export default function SiteLayout() {
         id="global-tree-background"
         className="yoga-tree-bg pointer-events-none fixed inset-0 z-0 opacity-[0.12] dark:opacity-[0.08]" 
       />
+      <SeoManager />
       <AppAppBar />
       <main className="relative z-10 flex-grow">
         <Outlet />

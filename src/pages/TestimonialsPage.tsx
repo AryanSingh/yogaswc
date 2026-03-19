@@ -1,10 +1,12 @@
 import Testimonials from "../components/Testimonials";
 import {
   featuredTestimonialQuote,
-  videoTestimonials,
 } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export default function TestimonialsPage() {
+  const { videoTestimonials } = useCmsContent();
+
   return (
     <div className="py-10">
       <section className="mx-auto max-w-5xl px-4 pb-8 md:px-6">

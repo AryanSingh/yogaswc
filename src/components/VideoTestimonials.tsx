@@ -1,7 +1,9 @@
-import { homepageVideoTestimonials } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 import { Button } from "./ui/button";
 
 export default function VideoTestimonials() {
+  const { homepageVideoTestimonials } = useCmsContent();
+
   return (
     <section className="bg-[#fbf8f1] py-16 md:py-24 dark:bg-[#17120d]">
       <div className="mx-auto max-w-5xl px-4 md:px-6">

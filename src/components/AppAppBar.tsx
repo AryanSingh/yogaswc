@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import { contactInfo, courses, socialLinks } from "../data/siteContent";
+import { courses, socialLinks } from "../data/siteContent";
 import logo from "../assets/py_logo_new.png";
+import { useCmsContent } from "../context/CmsContentContext";
 import { useCustomerAuth } from "../context/useCustomerAuth";
 import { Button } from "./ui/button";
 
@@ -70,6 +71,7 @@ function SocialIcon({ name }: { name: (typeof socialLinks)[number]["name"] }) {
 }
 
 export default function AppAppBar() {
+  const { contactInfo } = useCmsContent();
   const { isAuthenticated, logout, session } = useCustomerAuth();
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

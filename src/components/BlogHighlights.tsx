@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 
-import { blogPostPreviews } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 import { Button } from "./ui/button";
 
 export default function BlogHighlights() {
+  const { blogPosts } = useCmsContent();
+  const posts = blogPosts.slice(0, 3);
+
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -21,7 +24,7 @@ export default function BlogHighlights() {
       </div>
 
       <div className="grid gap-5 md:grid-cols-3">
-        {blogPostPreviews.map((post) => (
+        {posts.map((post) => (
           <article
             key={post.slug}
             className="overflow-hidden rounded-2xl border border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"

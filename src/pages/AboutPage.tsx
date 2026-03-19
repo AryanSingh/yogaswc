@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 
 import Highlights from "../components/Highlights";
 import { Button } from "../components/ui/button";
-import { siteAssets } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export default function AboutPage() {
+  const { siteAssets } = useCmsContent();
+
   return (
     <div className="pt-8">
       <section className="mx-auto max-w-5xl px-4 md:px-6">

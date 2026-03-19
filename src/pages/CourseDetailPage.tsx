@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { upcomingScheduleItems } from "../data/courseSchedule";
+import { useCmsContent } from "../context/CmsContentContext";
 import { courses } from "../data/siteContent";
 
 type DetailTabKey =
@@ -28,6 +28,7 @@ const detailTabs: { key: DetailTabKey; label: string }[] = [
 
 export default function CourseDetailPage() {
   const { slug } = useParams();
+  const { scheduleItems } = useCmsContent();
   const course = courses.find((item) => item.slug === slug);
   const [activeTab, setActiveTab] = useState<DetailTabKey>("curriculum");
 
@@ -45,7 +46,7 @@ export default function CourseDetailPage() {
     );
   }
 
-  const batches = upcomingScheduleItems.filter(
+  const batches = scheduleItems.filter(
     (item) => item.courseSlug === course.slug,
   );
 

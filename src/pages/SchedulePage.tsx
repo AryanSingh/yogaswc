@@ -1,15 +1,24 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 
-import { upcomingScheduleItems } from "../data/courseSchedule";
 import { Button } from "../components/ui/button";
+import { useCmsContent } from "../context/CmsContentContext";
 import { cn } from "../lib/utils";
 
 export default function SchedulePage() {
+  const { scheduleItems } = useCmsContent();
+  const upcomingScheduleItems = useMemo(
+    () =>
+      scheduleItems.filter(
+        (item) => item.status.toLowerCase() !== "completed",
+      ),
+    [scheduleItems],
+  );
+
   const courses = useMemo(() => {
     const unique = Array.from(new Set(upcomingScheduleItems.map((i) => i.course)));
     return unique.sort();
-  }, []);
+  }, [upcomingScheduleItems]);
 
   const [activeTab, setActiveTab] = useState(courses[0] || "");
 

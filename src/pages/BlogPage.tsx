@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
-import { blogPostPreviews } from "../data/siteContent";
 import { Button } from "../components/ui/button";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export default function BlogPage() {
+  const { blogPosts } = useCmsContent();
+
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
       <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
@@ -19,7 +21,7 @@ export default function BlogPage() {
       </p>
 
       <div className="mt-8 grid gap-6 md:grid-cols-3">
-        {blogPostPreviews.map((post) => (
+        {blogPosts.map((post) => (
           <article
             key={post.slug}
             className="overflow-hidden rounded-2xl border border-[#d8c6ae] bg-[#fffaf3] dark:border-[#5f4938] dark:bg-[#21180f]"

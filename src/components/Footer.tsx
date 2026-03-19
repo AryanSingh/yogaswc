@@ -3,12 +3,13 @@ import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 
 import { submitInquiry } from "../services/formSubmission";
-import { contactInfo } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import SitemarkIcon from "./SitemarkIcon";
 
 export default function Footer() {
+  const { contactInfo } = useCmsContent();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 

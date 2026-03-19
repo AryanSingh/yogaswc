@@ -1,4 +1,11 @@
-const uploadsBase = "https://purnamyogashala.com/wp-content/uploads";
+const baseUrl =
+  typeof import.meta !== "undefined" && import.meta.env?.BASE_URL
+    ? import.meta.env.BASE_URL
+    : "/yogaswc/";
+const normalizedBase = baseUrl.endsWith("/")
+  ? baseUrl.slice(0, -1)
+  : baseUrl;
+const uploadsBase = `${normalizedBase}/assets/purnam`;
 
 export type Course = {
   slug: string;
@@ -99,7 +106,6 @@ export const courses: Course[] = [
     location: "Agonda Beach, Goa, India",
     fee: "900 EUR with accommodation and food / 600 EUR course only",
     image: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=37.html",
     highlights: [
       "Offline 100-hour intensive for students wanting a shorter immersion",
       "Multi-style training with Hatha, Ashtanga, pranayama, kriya, and philosophy",
@@ -151,7 +157,6 @@ export const courses: Course[] = [
     location: "Agonda Beach, Goa, India",
     fee: "1800 EUR with accommodation and food / 900 EUR course only",
     image: `${uploadsBase}/2024/07/51.jpeg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=39.html",
     highlights: [
       "Yoga Alliance USA accredited 200-hour certification structure",
       "Multi-style curriculum spanning Hatha, Ashtanga, pranayama, anatomy, and philosophy",
@@ -479,7 +484,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "A closer look at the school’s small-group approach, traditional teaching roots, and Agonda-based residential experience.",
     image: `${uploadsBase}/2024/11/yoga-teacher-training-india.jpg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25958229.html",
   },
   {
     slug: "why-choose-goa-for-ytt",
@@ -487,7 +491,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "How the Agonda environment supports immersion through climate, simplicity, beach access, and community rhythm.",
     image: `${uploadsBase}/2025/01/purnam-goa.jpg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25958223.html",
   },
   {
     slug: "discovering-the-path-to-enlightenment",
@@ -495,7 +498,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "An introduction to the transformational aims of yoga education beyond technique, including self-study and holistic growth.",
     image: `${uploadsBase}/2021/12/blog-post-3.jpg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25957492.html",
   },
   {
     slug: "unlock-your-potential",
@@ -503,7 +505,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "A broader introduction to yoga teacher training in India, covering authenticity, cultural immersion, and what students can expect from a certification course.",
     image: `${uploadsBase}/2024/11/yoga-teacher-training-india.jpg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25957490.html",
   },
   {
     slug: "how-yoga-practice-can-transform-your-life",
@@ -511,7 +512,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "A short article connected to Manoj Yogiraj and the school’s broader message of personal transformation through sustained practice.",
     image: `${uploadsBase}/2024/08/65.jpeg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=235067.html",
   },
   {
     slug: "benefits-of-yoga-teacher-training-in-goa",
@@ -519,7 +519,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "Why Goa’s natural setting, experienced teachers, and international student community make it a strong place to train.",
     image: `${uploadsBase}/2025/01/purnam-goa.jpg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=235061.html",
   },
   {
     slug: "yoga-teacher-training-in-goa",
@@ -527,7 +526,6 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "An overview of Purnam Yogashala’s Yoga Alliance approved training structure, including 200-hour study and core curriculum areas.",
     image: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
-    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=235059.html",
   },
 ];
 

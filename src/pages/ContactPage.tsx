@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { contactInfo } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 import { submitInquiry } from "../services/formSubmission";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -13,6 +13,7 @@ type ContactLocationState = {
 };
 
 export default function ContactPage() {
+  const { contactInfo } = useCmsContent();
   const location = useLocation();
   const state = location.state as ContactLocationState | null;
   const [submitted, setSubmitted] = useState(false);

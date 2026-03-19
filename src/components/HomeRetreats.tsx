@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { siteAssets } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export default function HomeRetreats() {
+  const { siteAssets } = useCmsContent();
+
   return (
     <section className="relative overflow-hidden py-16 md:py-24">
       {/* Decorative background elements */}
@@ -55,4 +57,3 @@ export default function HomeRetreats() {
     </section>
   );
 }
-

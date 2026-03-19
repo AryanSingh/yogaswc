@@ -1,6 +1,8 @@
-import { siteAssets } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export default function Welcome() {
+  const { siteAssets } = useCmsContent();
+
   return (
     <section className="relative overflow-hidden py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-4 md:px-6">

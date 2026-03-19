@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
-import { testimonials } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 export default function Testimonials() {
+  const { testimonials } = useCmsContent();
+
   return (
     <section id="testimonials" className="mx-auto max-w-5xl px-4 pt-20 pb-16 md:px-6">
       <div className="mb-8 max-w-2xl">

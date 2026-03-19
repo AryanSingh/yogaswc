@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-import { contactInfo } from "../data/siteContent";
+import { useCmsContent } from "../context/CmsContentContext";
 
 const defaultMessage =
   "Hi Purnam Yogashala Goa! I need more info about your Yoga Teacher Training courses in Agonda.";
 
 export default function WhatsAppFloat() {
+  const { contactInfo } = useCmsContent();
   const [open, setOpen] = useState(false);
   const phone = contactInfo.phone.replace(/\D+/g, "");
   const href = `https://wa.me/${phone}?text=${encodeURIComponent(defaultMessage)}`;
