@@ -1,0 +1,1 @@
+import{F as e,U as t}from"./index-DZmJOXNh.js";import{t as n}from"./FAQ-BGu5Vn0U.js";var r=t(e());function i(){return(0,r.jsx)(n,{})}export{i as default};
