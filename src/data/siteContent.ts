@@ -33,7 +33,7 @@ export type AccommodationFeature = {
 };
 
 export type SocialLink = {
-  name: "Facebook" | "Instagram" | "YouTube" | "LinkedIn";
+  name: "Facebook" | "Instagram" | "YouTube" | "LinkedIn" | "X";
   href: string;
 };
 
@@ -408,6 +408,10 @@ export const socialLinks: SocialLink[] = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/purnam-yogashala/",
+  },
+  {
+    name: "X",
+    href: "https://x.com/purnamyogashala",
   },
 ];
 

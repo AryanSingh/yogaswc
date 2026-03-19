@@ -26,7 +26,7 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   }`;
 
 function SocialIcon({ name }: { name: (typeof socialLinks)[number]["name"] }) {
-  const iconClass = "h-4 w-4";
+  const iconClass = "h-5 w-5";
 
   if (name === "Facebook") {
     return (
@@ -50,6 +50,14 @@ function SocialIcon({ name }: { name: (typeof socialLinks)[number]["name"] }) {
     return (
       <svg viewBox="0 0 24 24" fill="currentColor" className={iconClass} aria-hidden="true">
         <path d="M21.6 8.4c-.2-1-.9-1.7-1.9-1.9C18 6 12 6 12 6s-6 0-7.7.5c-1 .2-1.7.9-1.9 1.9C2 10.2 2 12 2 12s0 1.8.4 3.6c.2 1 .9 1.7 1.9 1.9C6 18 12 18 12 18s6 0 7.7-.5c1-.2 1.7-.9 1.9-1.9.4-1.8.4-3.6.4-3.6s0-1.8-.4-3.6zM10 14.8V9.2L15 12l-5 2.8z" />
+      </svg>
+    );
+  }
+
+  if (name === "X") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={iconClass} aria-hidden="true">
+        <path d="M17.8 3H21l-7 8 8.2 10H16l-5-6.9L5 21H1.8l7.4-8.5L1.3 3H8l4.6 6.3L17.8 3zm-1.1 16h1.8L7 4.9H5.1L16.7 19z" />
       </svg>
     );
   }
@@ -131,7 +139,7 @@ export default function AppAppBar() {
               </button>
             </div>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex w-full items-center justify-center gap-2 sm:w-auto sm:justify-end">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -139,7 +147,7 @@ export default function AppAppBar() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.name}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[#8e5a3a] transition hover:bg-[#f0e1cc] hover:text-[#754529] dark:text-[#d3a57c] dark:hover:bg-[#2b2016]"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#b6906d]/45 bg-[#fff8ef]/55 text-[#8e5a3a] transition hover:border-[#8e5a3a] hover:bg-[#f0e1cc] hover:text-[#754529] dark:border-[#8b684d] dark:bg-[#21180f]/55 dark:text-[#d3a57c] dark:hover:bg-[#2b2016]"
               >
                 <SocialIcon name={social.name} />
               </a>
