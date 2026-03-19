@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 import { blogPostPreviews } from "../data/siteContent";
+import { Button } from "../components/ui/button";
 
 export default function BlogPage() {
   return (
@@ -31,6 +34,9 @@ export default function BlogPage() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {post.summary}
               </p>
+              <Link to={`/blog/${post.slug}`} className="mt-5 inline-flex">
+                <Button variant="outline">Read Article</Button>
+              </Link>
             </div>
           </article>
         ))}

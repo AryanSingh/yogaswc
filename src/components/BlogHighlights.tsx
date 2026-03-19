@@ -36,6 +36,12 @@ export default function BlogHighlights() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {post.summary}
               </p>
+              <Link
+                to={`/blog/${post.slug}`}
+                className="mt-4 inline-block text-sm font-medium text-[#8e5a3a] hover:underline dark:text-[#d3a57c]"
+              >
+                Read article
+              </Link>
             </div>
           </article>
         ))}

@@ -1,4 +1,4 @@
-import { videoTestimonials } from "../data/siteContent";
+import { homepageVideoTestimonials } from "../data/siteContent";
 import { Button } from "./ui/button";
 
 export default function VideoTestimonials() {
@@ -26,7 +26,7 @@ export default function VideoTestimonials() {
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {videoTestimonials.map((video) => (
+          {homepageVideoTestimonials.map((video) => (
             <a
               key={video.href}
               href={video.href}

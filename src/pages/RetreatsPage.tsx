@@ -21,10 +21,9 @@ export default function RetreatsPage() {
           Beach.
         </p>
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          The source retreat page describes this as a way to deepen practice
-          while gaining a more comprehensive understanding of yoga philosophy
-          and practice, without needing to commit to a full teacher training
-          first.
+          This retreat is designed to deepen practice while building a more
+          comprehensive understanding of yoga philosophy and day-to-day yogic
+          living, without needing to commit to a full teacher training first.
         </p>
         <img
           src={siteAssets.goaHero}
@@ -35,8 +34,8 @@ export default function RetreatsPage() {
           <article className="rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-4 dark:border-[#5f4938] dark:bg-[#21180f]">
             <h2 className="text-lg font-semibold">Retreat Focus</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              The source retreat page promises two yoga practice sessions plus
-              one guided meditation or sound-healing session each day.
+              Each day includes two yoga practice sessions plus one guided
+              meditation or sound-healing session.
             </p>
           </article>
           <article className="rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-4 dark:border-[#5f4938] dark:bg-[#21180f]">
@@ -58,14 +57,14 @@ export default function RetreatsPage() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <article className="rounded-2xl border border-[#d8c6ae] bg-[#fffaf3] p-6 dark:border-[#5f4938] dark:bg-[#21180f]">
-            <h2 className="text-2xl font-semibold">What the source retreat offer emphasizes</h2>
+            <h2 className="text-2xl font-semibold">What The Retreat Emphasizes</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p>
-                The source retreat page centers the experience on holistic yoga
-                practice, yoga philosophy, and a calm beachside environment. It
-                specifically includes two yoga sessions daily, a guided
-                meditation or sound-healing session, and a quieter evening
-                rhythm with silence beginning after dinner.
+                The retreat centers the experience on holistic yoga practice,
+                yoga philosophy, and a calm beachside environment. It includes
+                two yoga sessions daily, a guided meditation or sound-healing
+                session, and a quieter evening rhythm with silence beginning
+                after dinner.
               </p>
               <p>
                 It also includes one Ayurvedic massage for retreats of at least
@@ -113,9 +112,9 @@ export default function RetreatsPage() {
           <article className="rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-5 dark:border-[#5f4938] dark:bg-[#21180f]">
             <h2 className="text-lg font-semibold">Food</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Three vegetarian meals are included daily. The source page calls
-              out buffet-style breakfasts, traditional Indian lunch and dinner
-              dishes, plus tea, juice, and unlimited filtered water.
+              Three vegetarian meals are included daily, with buffet-style
+              breakfasts, traditional Indian lunch and dinner dishes, plus tea,
+              juice, and unlimited filtered water.
             </p>
           </article>
           <article className="rounded-xl border border-[#d8c6ae] bg-[#fffaf3] p-5 dark:border-[#5f4938] dark:bg-[#21180f]">
@@ -130,14 +129,13 @@ export default function RetreatsPage() {
             <h2 className="text-lg font-semibold">Included Extra</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               One Ayurvedic massage is included for retreats of three days or
-              longer, adding a restorative element that the source page
-              highlights directly.
+              longer, adding a restorative element to the overall stay.
             </p>
           </article>
         </div>
 
         <section className="mt-8 rounded-2xl border border-[#d8c6ae] bg-[#fffaf3] p-6 dark:border-[#5f4938] dark:bg-[#21180f]">
-          <h2 className="text-2xl font-semibold">Sample menu from the source page</h2>
+          <h2 className="text-2xl font-semibold">Sample Menu</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             <article>
               <h3 className="text-lg font-semibold">Breakfast</h3>
@@ -162,8 +160,8 @@ export default function RetreatsPage() {
             </article>
           </div>
           <p className="mt-5 text-sm text-muted-foreground">
-            The source also mentions masala chai, green tea, herbal tea, fresh
-            juice, and unlimited filtered water each day.
+            Masala chai, green tea, herbal tea, fresh juice, and unlimited
+            filtered water are also available each day.
           </p>
         </section>
 

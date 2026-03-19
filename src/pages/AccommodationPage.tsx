@@ -38,10 +38,10 @@ export default function AccommodationPage() {
         ))}
       </div>
       <div className="mt-8 rounded-2xl border border-[#d8c6ae] bg-[#fffaf3] p-6 dark:border-[#5f4938] dark:bg-[#21180f]">
-        <h2 className="text-xl font-semibold">Stay details from the source content</h2>
+        <h2 className="text-xl font-semibold">Stay Details</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          The source course pages highlight AC deluxe cottages, eco-friendly
-          wooden bungalow options, attached bathrooms, hot water, Wi-Fi, and a
+          Accommodation includes AC deluxe cottages and eco-friendly wooden
+          bungalow options with attached bathrooms, hot water, Wi-Fi, and a
           location just a short walk from the Arabian Sea.
         </p>
       </div>

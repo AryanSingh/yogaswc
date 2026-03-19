@@ -23,6 +23,7 @@ import CustomerLoginPage from "./pages/CustomerLoginPage";
 import CustomerSignUpPage from "./pages/CustomerSignUpPage";
 import CustomerDashboardPage from "./pages/CustomerDashboardPage";
 import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/enquiry" element={<ContactPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogDetailPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/customer/login" element={<CustomerLoginPage />} />
             <Route path="/customer/signup" element={<CustomerSignUpPage />} />

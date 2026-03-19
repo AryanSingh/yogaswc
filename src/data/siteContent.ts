@@ -67,6 +67,15 @@ export type BlogPostPreview = {
   title: string;
   summary: string;
   image: string;
+  sourceUrl?: string;
+};
+
+export type BlogPost = BlogPostPreview & {
+  intro: string;
+  sections: {
+    title: string;
+    points: string[];
+  }[];
 };
 
 export const siteAssets = {
@@ -270,12 +279,12 @@ export const faqItems = [
   {
     question: "Is the 200-hour course suitable for complete beginners?",
     answer:
-      "Yes. The source school positions the foundational training for beginner to intermediate students, provided there is sincere interest and commitment to practice.",
+      "Yes. The foundational training is open to beginner and intermediate students, provided there is sincere interest and commitment to practice.",
   },
   {
     question: "What styles are covered in the programs?",
     answer:
-      "The source material highlights holistic yoga, Hatha yoga, Ashtanga Vinyasa, pranayama, meditation, kriya work, philosophy, and teaching methodology.",
+      "The programs cover holistic yoga, Hatha yoga, Ashtanga Vinyasa, pranayama, meditation, kriya work, philosophy, and teaching methodology.",
   },
   {
     question: "What does the course fee generally include?",
@@ -285,12 +294,12 @@ export const faqItems = [
   {
     question: "What is not included in the course fee?",
     answer:
-      "The source explicitly excludes visa fees, airfare, taxi pick-up, and Ayurvedic panchakarma or treatment costs.",
+      "Visa fees, airfare, taxi pick-up, and Ayurvedic panchakarma or treatment costs are not included.",
   },
   {
     question: "How do I reserve my seat?",
     answer:
-      "The source application flow uses an enquiry/application form followed by a deposit to reserve the place, with final payment due before the course.",
+      "Reserve your place by completing the enquiry or application process and paying the required deposit, with final payment due before the course.",
   },
 ];
 
@@ -370,13 +379,6 @@ export const testimonials: Testimonial[] = [
 
 export const videoTestimonials: VideoTestimonial[] = [
   {
-    title: "YTT Students Discussion Session",
-    duration: "Course Talk",
-    thumbnail: "https://img.youtube.com/vi/jbPNiGyCUS8/hqdefault.jpg",
-    student: "With Manoj Kumar Yogiraj Ji",
-    href: "https://www.youtube.com/watch?v=jbPNiGyCUS8",
-  },
-  {
     title: "Purnam YogaShala Goa Student Testimonial",
     duration: "Video Review",
     thumbnail: "https://img.youtube.com/vi/kLX7jqU6LYc/hqdefault.jpg",
@@ -390,6 +392,34 @@ export const videoTestimonials: VideoTestimonial[] = [
     student: "Agonda Beach, Goa",
     href: "https://www.youtube.com/watch?v=QBOoRkAfJpM",
   },
+  {
+    title: "Purnam YogaShala Goa Student Testimonial",
+    duration: "Video Review",
+    thumbnail: "https://img.youtube.com/vi/7Eo4xbf6trI/hqdefault.jpg",
+    student: "Student Voice",
+    href: "https://www.youtube.com/watch?v=7Eo4xbf6trI",
+  },
+  {
+    title: "200 Hour Yoga TTC Student Testimonial",
+    duration: "Video Review",
+    thumbnail: "https://img.youtube.com/vi/RMQa0jmK1SM/hqdefault.jpg",
+    student: "Agonda Beach, Goa",
+    href: "https://www.youtube.com/watch?v=RMQa0jmK1SM",
+  },
+];
+
+export const featuredTestimonialQuote =
+  "Yoga takes you into the present moment. The only place where life exists.";
+
+export const homepageVideoTestimonials: VideoTestimonial[] = [
+  {
+    title: "YTT Students Discussion Session",
+    duration: "Course Talk",
+    thumbnail: "https://img.youtube.com/vi/jbPNiGyCUS8/hqdefault.jpg",
+    student: "With Manoj Kumar Yogiraj Ji",
+    href: "https://www.youtube.com/watch?v=jbPNiGyCUS8",
+  },
+  ...videoTestimonials.slice(0, 2),
 ];
 
 export const socialLinks: SocialLink[] = [
@@ -449,6 +479,7 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "A closer look at the school’s small-group approach, traditional teaching roots, and Agonda-based residential experience.",
     image: `${uploadsBase}/2024/11/yoga-teacher-training-india.jpg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25958229.html",
   },
   {
     slug: "why-choose-goa-for-ytt",
@@ -456,6 +487,7 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "How the Agonda environment supports immersion through climate, simplicity, beach access, and community rhythm.",
     image: `${uploadsBase}/2025/01/purnam-goa.jpg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25958223.html",
   },
   {
     slug: "discovering-the-path-to-enlightenment",
@@ -463,6 +495,192 @@ export const blogPostPreviews: BlogPostPreview[] = [
     summary:
       "An introduction to the transformational aims of yoga education beyond technique, including self-study and holistic growth.",
     image: `${uploadsBase}/2021/12/blog-post-3.jpg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25957492.html",
+  },
+  {
+    slug: "unlock-your-potential",
+    title: "Unlock Your Potential: The Ultimate Guide to Yoga Teacher Training Certification Courses in India",
+    summary:
+      "A broader introduction to yoga teacher training in India, covering authenticity, cultural immersion, and what students can expect from a certification course.",
+    image: `${uploadsBase}/2024/11/yoga-teacher-training-india.jpg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=25957490.html",
+  },
+  {
+    slug: "how-yoga-practice-can-transform-your-life",
+    title: "How Yoga Practice Can Transform Your Life",
+    summary:
+      "A short article connected to Manoj Yogiraj and the school’s broader message of personal transformation through sustained practice.",
+    image: `${uploadsBase}/2024/08/65.jpeg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=235067.html",
+  },
+  {
+    slug: "benefits-of-yoga-teacher-training-in-goa",
+    title: "Benefits of Yoga Teacher Training in Goa",
+    summary:
+      "Why Goa’s natural setting, experienced teachers, and international student community make it a strong place to train.",
+    image: `${uploadsBase}/2025/01/purnam-goa.jpg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=235061.html",
+  },
+  {
+    slug: "yoga-teacher-training-in-goa",
+    title: "Yoga Teacher Training in Goa",
+    summary:
+      "An overview of Purnam Yogashala’s Yoga Alliance approved training structure, including 200-hour study and core curriculum areas.",
+    image: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
+    sourceUrl: "https://purnamyogashala.com/index.html%3Fp=235059.html",
+  },
+];
+
+export const blogPosts: BlogPost[] = [
+  {
+    ...blogPostPreviews[0],
+    intro:
+      "If you are considering yoga teacher training in Goa, Purnam Yogashala stands out for its Agonda setting, complete curriculum, and grounding in authentic practice.",
+    sections: [
+      {
+        title: "Why It Stands Out",
+        points: [
+          "The school is set on Agonda Beach in South Goa, giving students a quieter and more reflective environment for study.",
+          "The curriculum is Yoga Alliance aligned and intentionally well-rounded rather than narrowly physical.",
+          "Training spans asana, pranayama, meditation, anatomy, physiology, and yoga philosophy.",
+        ],
+      },
+      {
+        title: "Student-facing takeaway",
+        points: [
+          "The article frames Purnam Yogashala as a place for healing, learning, and growth rather than only certification.",
+          "The combination of setting and structured curriculum is presented as a major advantage for aspiring teachers.",
+        ],
+      },
+    ],
+  },
+  {
+    ...blogPostPreviews[1],
+    intro:
+      "Goa is an exceptional place for yoga teacher training because it combines traditional learning with beachside calm, global community, and relative affordability.",
+    sections: [
+      {
+        title: "Why Goa Works for Training",
+        points: [
+          "Students can learn from experienced yogis in an environment that supports both physical and spiritual practice.",
+          "Serene beaches, lush greenery, and a warm tropical climate make regular practice easier and more immersive.",
+          "Goa offers a rich blend of Indian and European influence, giving trainees a wider cultural experience.",
+        ],
+      },
+      {
+        title: "Practical benefits",
+        points: [
+          "Goa often remains more affordable than Western training destinations.",
+          "Programs commonly include accommodation and meals so students can focus on the training itself.",
+          "Time outside class can still include nature, recreation, and restorative space, creating a more balanced intensive.",
+        ],
+      },
+    ],
+  },
+  {
+    ...blogPostPreviews[2],
+    intro:
+      "India is one of the most transformative places to pursue yoga teacher certification because it offers authenticity, cultural depth, and direct access to the roots of the practice.",
+    sections: [
+      {
+        title: "Why India Matters",
+        points: [
+          "India is presented as the birthplace of yoga and therefore a uniquely authentic training context.",
+          "Traditional teachings, ancient texts, and lineage-based understanding are treated as major differentiators.",
+          "Students are immersed not only in practice but also in local culture, festivals, food, and community life.",
+        ],
+      },
+      {
+        title: "What students gain",
+        points: [
+          "A sense of personal transformation beyond the physical asanas.",
+          "Exposure to multiple yoga styles so students can find the approach that resonates most strongly.",
+          "A global network of like-minded practitioners drawn to India for serious study.",
+        ],
+      },
+    ],
+  },
+  {
+    ...blogPostPreviews[3],
+    intro:
+      "Yoga teacher training in India is a holistic next step for students who want to deepen practice and eventually teach with more authenticity and confidence.",
+    sections: [
+      {
+        title: "Why India Is Recommended",
+        points: [
+          "India offers an authentic experience rooted in teachers and traditions shaped by long-term practice.",
+          "The cultural setting adds depth, from temples and markets to coastal and mountain learning environments.",
+          "A wide range of yoga styles gives trainees room to explore their own teaching direction.",
+        ],
+      },
+      {
+        title: "What a course typically includes",
+        points: [
+          "Daily asana practice to deepen posture knowledge and alignment.",
+          "Structured study in pranayama, meditation, anatomy, philosophy, and teaching foundations.",
+          "Programs ranging from 200 to 500 hours depending on training level.",
+        ],
+      },
+    ],
+  },
+  {
+    ...blogPostPreviews[4],
+    intro:
+      "Yoga practice supports personal transformation and a more grounded way of living when it is approached consistently and with sincerity.",
+    sections: [
+      {
+        title: "What This Means",
+        points: [
+          "Yoga practice is presented as life-changing when approached consistently.",
+          "The article is associated with Manoj Yogiraj, reinforcing the school’s teacher-led voice.",
+          "The message aligns with the school’s broader emphasis on transformation through committed practice.",
+        ],
+      },
+    ],
+  },
+  {
+    ...blogPostPreviews[5],
+    intro:
+      "Goa itself is a meaningful part of the training experience, not just the backdrop.",
+    sections: [
+      {
+        title: "Main Benefits",
+        points: [
+          "Goa creates an authentic learning environment that combines traditional practice with natural calm.",
+          "Practicing on beaches or near greenery supports relaxation, mindfulness, and a deeper connection to the work.",
+          "The international student community creates friendships, support, and future professional connections.",
+        ],
+      },
+      {
+        title: "Conclusion",
+        points: [
+          "Goa is a place where environment, teachers, and community strengthen the teacher training journey.",
+        ],
+      },
+    ],
+  },
+  {
+    ...blogPostPreviews[6],
+    intro:
+      "Purnam Yogashala’s Yoga Alliance approved training in Goa offers a clear pathway into deeper study and a broad foundational curriculum.",
+    sections: [
+      {
+        title: "Programs",
+        points: [
+          "The 200-hour training is a strong fit for beginners and students wanting to deepen practice.",
+          "The school is described as offering different YTT formats based on commitment level.",
+        ],
+      },
+      {
+        title: "Core curriculum areas",
+        points: [
+          "Asanas with detailed instruction and practice.",
+          "Pranayama for breath control and energetic regulation.",
+          "Meditation to steady the mind and improve concentration.",
+          "Anatomy and physiology to understand yoga in relation to the body.",
+        ],
+      },
+    ],
   },
 ];
 

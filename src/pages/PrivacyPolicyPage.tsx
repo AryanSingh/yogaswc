@@ -9,7 +9,7 @@ const privacySections = [
   },
   {
     title: "Payments and Booking",
-    body: "The source site states that booking deposits are used to reserve a seat and may be subject to course terms. Final payment and booking conditions should always be confirmed directly with admissions before transfer.",
+    body: "Booking deposits are used to reserve a seat and may be subject to course terms. Final payment and booking conditions should always be confirmed directly with admissions before transfer.",
   },
   {
     title: "Media and Content",
