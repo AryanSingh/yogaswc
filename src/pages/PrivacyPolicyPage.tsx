@@ -13,7 +13,7 @@ const privacySections = [
   },
   {
     title: "Media and Content",
-    body: "Source course terms mention restrictions on unauthorized recording and editing of training materials. Promotional use of school media remains subject to the school’s discretion and published terms.",
+    body: "Course terms may include restrictions on unauthorized recording and editing of training materials. Promotional use of school media remains subject to the school’s discretion and published terms.",
   },
   {
     title: "Contact",

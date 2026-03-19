@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 import { useCmsContent } from "../context/CmsContentContext";
-import { courses } from "../data/siteContent";
+import { courses, faqItems, socialLinks } from "../data/siteContent";
 
 const defaultTitle =
   "Purnam Yogashala Goa | Yoga Teacher Training & Retreats in Agonda";
@@ -18,6 +18,10 @@ const defaultKeywords = [
   "yoga retreat Goa",
   "Agonda Beach yoga school",
 ];
+
+const basePath = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL.slice(0, -1)
+  : import.meta.env.BASE_URL;
 
 function ensureMeta(selector: string, attrs: Record<string, string>) {
   let element = document.head.querySelector(selector) as HTMLMetaElement | null;
@@ -60,8 +64,34 @@ function ensureStructuredData(data: object) {
   script.textContent = JSON.stringify(data);
 }
 
+function clearStructuredData() {
+  const script = document.getElementById("seo-structured-data");
+  script?.remove();
+}
+
+function toSitePath(pathname: string) {
+  const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return normalizedPath === "/"
+    ? `${basePath || ""}/`
+    : `${basePath || ""}${normalizedPath}`;
+}
+
 function buildAbsoluteUrl(pathname: string) {
-  return new URL(pathname, window.location.origin).toString();
+  if (/^(https?:)?\/\//.test(pathname)) {
+    return pathname;
+  }
+
+  if (
+    pathname.startsWith(`${basePath}/`) ||
+    pathname === basePath ||
+    pathname.startsWith("/assets/")
+  ) {
+    const normalizedPath =
+      pathname.startsWith("/assets/") ? toSitePath(pathname) : pathname;
+    return new URL(normalizedPath, window.location.origin).toString();
+  }
+
+  return new URL(toSitePath(pathname), window.location.origin).toString();
 }
 
 function normalizeTitle(title: string) {
@@ -86,8 +116,10 @@ function getSeoForPath(
         name: "Purnam Yogashala Goa",
         description: defaultDescription,
         url: buildAbsoluteUrl("/"),
+        image: buildAbsoluteUrl("/assets/py_logo_cropped.png"),
         telephone: contactInfo.phone,
         email: contactInfo.email,
+        sameAs: socialLinks.map((link) => link.href),
         address: {
           "@type": "PostalAddress",
           streetAddress: contactInfo.address,
@@ -180,6 +212,18 @@ function getSeoForPath(
         "Find answers about yoga teacher training in Goa, including eligibility, certification, styles taught, fees, and admissions.",
       keywords: [...defaultKeywords, "yoga FAQ Goa"],
       type: "website",
+      structuredData: {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      },
     };
   }
 
@@ -221,6 +265,15 @@ function getSeoForPath(
   };
 }
 
+function isPrivatePath(pathname: string) {
+  return (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/customer") ||
+    pathname === "/login" ||
+    pathname === "/signup"
+  );
+}
+
 export default function SeoManager() {
   const location = useLocation();
   const params = useParams();
@@ -231,6 +284,7 @@ export default function SeoManager() {
     let description = defaultDescription;
     let keywords = defaultKeywords;
     let structuredData: object | undefined;
+    let imagePath = "/assets/py_logo_cropped.png";
 
     if (location.pathname.startsWith("/courses/")) {
       const course = courses.find((item) => item.slug === params.slug);
@@ -238,11 +292,13 @@ export default function SeoManager() {
         title = `${course.title} in Goa`;
         description = `${course.title} at Purnam Yogashala Goa. ${course.subtitle}. Explore curriculum, daily schedule, inclusions, exclusions, and upcoming batches.`;
         keywords = [...defaultKeywords, course.title, "yoga curriculum Goa"];
+        imagePath = course.image;
         structuredData = {
           "@context": "https://schema.org",
           "@type": "Course",
           name: course.title,
           description: description,
+          image: buildAbsoluteUrl(course.image),
           provider: {
             "@type": "Organization",
             name: "Purnam Yogashala Goa",
@@ -256,11 +312,13 @@ export default function SeoManager() {
         title = post.title;
         description = post.summary;
         keywords = [...defaultKeywords, post.title, "yoga blog"];
+        imagePath = post.image;
         structuredData = {
           "@context": "https://schema.org",
           "@type": "BlogPosting",
           headline: post.title,
           description: post.summary,
+          image: [buildAbsoluteUrl(post.image)],
           author: {
             "@type": "Organization",
             name: "Purnam Yogashala Goa",
@@ -282,7 +340,11 @@ export default function SeoManager() {
 
     const normalizedTitle = normalizeTitle(title);
     const canonical = buildAbsoluteUrl(location.pathname);
-    const ogImage = buildAbsoluteUrl("/assets/py_logo.png");
+    const ogImage = buildAbsoluteUrl(imagePath);
+    const isPrivate = isPrivatePath(location.pathname);
+    const robotsContent = isPrivate
+      ? "noindex, nofollow, noarchive"
+      : "index, follow, max-image-preview:large";
 
     document.title = normalizedTitle;
 
@@ -296,7 +358,23 @@ export default function SeoManager() {
     });
     ensureMeta('meta[name="robots"]', {
       name: "robots",
-      content: "index, follow, max-image-preview:large",
+      content: robotsContent,
+    });
+    ensureMeta('meta[name="author"]', {
+      name: "author",
+      content: "Purnam Yogashala Goa",
+    });
+    ensureMeta('meta[name="theme-color"]', {
+      name: "theme-color",
+      content: "#2b1d13",
+    });
+    ensureMeta('meta[property="og:site_name"]', {
+      property: "og:site_name",
+      content: "Purnam Yogashala Goa",
+    });
+    ensureMeta('meta[property="og:locale"]', {
+      property: "og:locale",
+      content: "en_IN",
     });
     ensureMeta('meta[property="og:title"]', {
       property: "og:title",
@@ -318,6 +396,10 @@ export default function SeoManager() {
       property: "og:image",
       content: ogImage,
     });
+    ensureMeta('meta[property="og:image:alt"]', {
+      property: "og:image:alt",
+      content: "Purnam Yogashala Goa",
+    });
     ensureMeta('meta[name="twitter:card"]', {
       name: "twitter:card",
       content: "summary_large_image",
@@ -334,12 +416,25 @@ export default function SeoManager() {
       name: "twitter:image",
       content: ogImage,
     });
-    ensureLink("canonical", canonical);
+    ensureMeta('meta[name="twitter:image:alt"]', {
+      name: "twitter:image:alt",
+      content: "Purnam Yogashala Goa",
+    });
+    ensureMeta('meta[name="twitter:site"]', {
+      name: "twitter:site",
+      content: "@purnamyogashala",
+    });
 
-    if (structuredData) {
-      ensureStructuredData(structuredData);
+    if (!isPrivate) {
+      ensureLink("canonical", canonical);
     }
-  }, [contactInfo, location.pathname, params.slug]);
+
+    if (structuredData && !isPrivate) {
+      ensureStructuredData(structuredData);
+    } else {
+      clearStructuredData();
+    }
+  }, [contactInfo, location.pathname, params.slug, blogPosts]);
 
   return null;
 }
