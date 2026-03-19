@@ -21,6 +21,11 @@ export default function AboutPage() {
           confident teaching through disciplined practice, satsang, and
           experienced guidance.
         </p>
+        <p className="mt-3 max-w-3xl text-muted-foreground">
+          We combine the welcoming clarity of a modern learning experience with
+          yoga practices rooted in traditional discipline, self-study, and
+          teacher-guided transformation.
+        </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <img
             src={siteAssets.logo}
@@ -36,6 +41,9 @@ export default function AboutPage() {
         <div className="mt-6 mb-12 flex flex-col gap-3 sm:flex-row">
           <Link to="/about/philosophy">
             <Button variant="outline">Our Philosophy</Button>
+          </Link>
+          <Link to="/teachers">
+            <Button variant="outline">Meet Our Team</Button>
           </Link>
           <Link to="/about/campus">
             <Button className="bg-[#8e5a3a] text-white hover:bg-[#754529] dark:bg-[#b17752] dark:hover:bg-[#9a6545]">

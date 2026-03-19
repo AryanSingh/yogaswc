@@ -59,6 +59,9 @@ export default function Footer() {
             <Link to="/faq" className="hover:text-foreground">
               FAQ
             </Link>
+            <Link to="/blog" className="hover:text-foreground">
+              Blog
+            </Link>
             <Link to="/schedule" className="hover:text-foreground">
               Schedule
             </Link>
@@ -96,7 +99,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-[#d8c6ae] py-4 text-center text-xs text-[#7b634f] dark:border-[#4f3f30] dark:text-[#c9b59e]">
         Copyright {new Date().getFullYear()} Purnam Yogashala. All rights
-        reserved.
+        reserved. <Link to="/privacy-policy" className="underline">Privacy Policy</Link>
       </div>
     </footer>
   );

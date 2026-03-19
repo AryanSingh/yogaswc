@@ -22,6 +22,8 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 import CustomerLoginPage from "./pages/CustomerLoginPage";
 import CustomerSignUpPage from "./pages/CustomerSignUpPage";
 import CustomerDashboardPage from "./pages/CustomerDashboardPage";
+import BlogPage from "./pages/BlogPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 function App() {
   return (
@@ -47,7 +49,10 @@ function App() {
             <Route path="/admissions" element={<AdmissionsPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/enquiry" element={<ContactPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/customer/login" element={<CustomerLoginPage />} />
             <Route path="/customer/signup" element={<CustomerSignUpPage />} />
             <Route

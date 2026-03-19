@@ -11,6 +11,7 @@ const links = [
   { to: "/teachers", label: "Teachers" },
   { to: "/accommodation", label: "Stay" },
   { to: "/schedule", label: "Schedule" },
+  { to: "/blog", label: "Blog" },
 ];
 
 const aboutLinks = [
@@ -100,8 +101,8 @@ export default function AppAppBar() {
   };
 
   return (
-    <>
-      <div className="border-b border-border/60 bg-[#f7efe4]/90 text-[#6a4a33] dark:bg-[#1f1711]/90 dark:text-[#d9b89a] relative z-[80]">
+    <div className="sticky top-0 z-[90]">
+      <div className="relative z-[80] border-b border-border/60 bg-[#f7efe4]/90 text-[#6a4a33] dark:bg-[#1f1711]/90 dark:text-[#d9b89a]">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-2 text-xs md:px-6">
           <div className="hidden items-center gap-3 sm:flex">
             <a href={`mailto:${contactInfo.email}`} className="hover:underline">
@@ -147,7 +148,7 @@ export default function AppAppBar() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-[70] border-b border-border/60 bg-background/95 backdrop-blur">
+      <header className="border-b border-border/60 bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-4 md:h-28 md:px-6">
           <Link to="/" className="flex shrink-0 items-center gap-x-1.5 pr-2 md:pr-4">
             <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border/20 md:h-20 md:w-20">
@@ -422,6 +423,6 @@ export default function AppAppBar() {
           </>
         )}
       </header>
-    </>
+    </div>
   );
 }

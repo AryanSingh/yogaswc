@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
 
 import Hero from "../components/Hero";
+import HomeCourses from "../components/HomeCourses";
+import Welcome from "../components/Welcome";
+import HomeRetreats from "../components/HomeRetreats";
 import ImpactStats from "../components/ImpactStats";
 import LogoCollection from "../components/LogoCollection";
 import Features from "../components/Features";
 import Highlights from "../components/Highlights";
+import VideoTestimonials from "../components/VideoTestimonials";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import FAQ from "../components/FAQ";
+import ApplicationSteps from "../components/ApplicationSteps";
+import BlogHighlights from "../components/BlogHighlights";
 import { Button } from "../components/ui/button";
 
 export default function HomePage() {
@@ -15,6 +21,18 @@ export default function HomePage() {
     <>
       <div data-reveal data-reveal-delay="0">
         <Hero />
+      </div>
+      <div data-reveal data-reveal-delay="1">
+        <HomeCourses />
+      </div>
+      <div data-reveal data-reveal-delay="1">
+        <Welcome />
+      </div>
+      <div data-reveal data-reveal-delay="1">
+        <HomeRetreats />
+      </div>
+      <div data-reveal data-reveal-delay="1">
+        <VideoTestimonials />
       </div>
       <div data-reveal data-reveal-delay="1">
         <ImpactStats />
@@ -45,7 +63,13 @@ export default function HomePage() {
         <Pricing />
       </div>
       <div data-reveal data-reveal-delay="2">
+        <ApplicationSteps />
+      </div>
+      <div data-reveal data-reveal-delay="2">
         <FAQ />
+      </div>
+      <div data-reveal data-reveal-delay="2">
+        <BlogHighlights />
       </div>
       <section
         data-reveal

@@ -35,8 +35,8 @@ export default function Testimonials() {
         ))}
       </div>
       <div className="mt-8">
-        <Link to="/teachers">
-          <Button variant="outline">Meet The Teaching Team</Button>
+        <Link to="/testimonials">
+          <Button variant="outline">Read More Reviews</Button>
         </Link>
       </div>
     </section>

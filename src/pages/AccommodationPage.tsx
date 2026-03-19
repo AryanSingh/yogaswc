@@ -37,6 +37,14 @@ export default function AccommodationPage() {
           </article>
         ))}
       </div>
+      <div className="mt-8 rounded-2xl border border-[#d8c6ae] bg-[#fffaf3] p-6 dark:border-[#5f4938] dark:bg-[#21180f]">
+        <h2 className="text-xl font-semibold">Stay details from the source content</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          The source course pages highlight AC deluxe cottages, eco-friendly
+          wooden bungalow options, attached bathrooms, hot water, Wi-Fi, and a
+          location just a short walk from the Arabian Sea.
+        </p>
+      </div>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link to="/schedule">
           <Button variant="outline">Check Intake Dates</Button>

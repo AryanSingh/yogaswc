@@ -31,6 +31,16 @@ export default function TeachersPage() {
             <div className="p-4">
               <h2 className="text-lg font-semibold">{teacher.name}</h2>
               <p className="text-sm text-muted-foreground">{teacher.role}</p>
+              {teacher.specialties?.length ? (
+                <p className="mt-3 text-xs uppercase tracking-[0.14em] text-[#8e5a3a] dark:text-[#d3a57c]">
+                  {teacher.specialties.join(" • ")}
+                </p>
+              ) : null}
+              {teacher.bio ? (
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {teacher.bio}
+                </p>
+              ) : null}
             </div>
           </article>
         ))}
