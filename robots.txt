@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aryansingh.github.io/yogaswc/sitemap.xml
+Sitemap: https://purnamyogashala.com/sitemap.xml
