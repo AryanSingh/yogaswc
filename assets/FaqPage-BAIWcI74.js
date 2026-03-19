@@ -1,0 +1,1 @@
+import{F as e,U as t}from"./index-B1y_9Yci.js";import{t as n}from"./FAQ-DfA_nYwQ.js";var r=t(e());function i(){return(0,r.jsx)(n,{})}export{i as default};
