@@ -2,12 +2,17 @@ import { Link } from "react-router-dom";
 
 import { Button } from "../components/ui/button";
 import { useCmsContent } from "../context/CmsContentContext";
+import SEO from "../components/SEO";
 
 export default function BlogPage() {
   const { blogPosts } = useCmsContent();
 
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
+      <SEO 
+        title="Yoga Blog | Insights on Practice, Training & Goa Lifestyle"
+        description="Explore articles on yoga teacher training, meditation, and wellness at Purnam Yogashala. Your guide to authentic yogic living in Goa."
+      />
       <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
         Blog
       </p>

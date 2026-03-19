@@ -25,7 +25,38 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[#d8c6ae] bg-[#f6efe4] text-[#2f2920] dark:border-[#4f3f30] dark:bg-[#16110d] dark:text-[#f2e8d6]">
-      <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 md:grid-cols-3 md:px-6 md:py-12">
+      <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 md:px-6 md:py-12">
+        <div className="flex flex-col gap-6 md:col-span-3 lg:flex-row lg:items-center lg:justify-between border-b border-[#d8c6ae] pb-10 dark:border-[#4f3f30]">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2 font-medium text-[#3b2a1d] dark:text-[#f0dcc7]">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+              YOGA ALLIANCE CERTIFICATE
+            </div>
+            <img 
+              src="/assets/certifications/yoga-alliance-certificate.jpeg" 
+              alt="Yoga Alliance Certificate" 
+              className="h-44 w-fit max-w-full object-contain rounded-lg shadow-md border border-[#d8c6ae] dark:border-[#4f3f30]"
+            />
+          </div>
+          <div className="flex flex-col gap-3 lg:items-end">
+            <div className="flex items-center gap-2 font-medium text-[#3b2a1d] dark:text-[#f0dcc7]">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                <path d="M22 4L12 14.01l-3-3" />
+              </svg>
+              YOGA ALLIANCE REGISTERED SCHOOL
+            </div>
+            <img 
+              src="/assets/certifications/rys-200-badge.png" 
+              alt="RYS 200 Badge" 
+              className="h-32 w-fit max-w-full object-contain drop-shadow-sm"
+            />
+          </div>
+        </div>
+
         <div>
           <div className="flex items-center gap-2 font-semibold">
             <SitemarkIcon className="h-8 w-8 text-[#8e5a3a] dark:text-[#d3a57c]" />
@@ -99,8 +130,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-[#d8c6ae] py-4 text-center text-xs text-[#7b634f] dark:border-[#4f3f30] dark:text-[#c9b59e]">
-        Copyright {new Date().getFullYear()} Purnam Yogashala. All rights
-        reserved. <Link to="/privacy-policy" className="underline">Privacy Policy</Link>
+        Copyright {new Date().getFullYear()} Purnam Yogashala. All rights reserved. | <Link to="/privacy-policy" className="underline">Privacy Policy</Link> | <Link to="/terms-conditions" className="underline">Terms & Conditions</Link>
       </div>
     </footer>
   );

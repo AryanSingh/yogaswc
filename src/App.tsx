@@ -35,6 +35,7 @@ const AdminDashboardPage = lazy(() => import("./pages/AdminDashboardPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogDetailPage = lazy(() => import("./pages/BlogDetailPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const TermsAndConditionsPage = lazy(() => import("./pages/TermsAndConditionsPage"));
 
 function RouteLoadingFallback() {
   return (
@@ -76,6 +77,7 @@ function App() {
                   <Route path="/blog" element={<BlogPage />} />
                   <Route path="/blog/:slug" element={<BlogDetailPage />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                  <Route path="/terms-conditions" element={<TermsAndConditionsPage />} />
                   <Route path="/customer/login" element={<CustomerLoginPage />} />
                   <Route path="/customer/signup" element={<CustomerSignUpPage />} />
                   <Route path="/admin/login" element={<AdminLoginPage />} />

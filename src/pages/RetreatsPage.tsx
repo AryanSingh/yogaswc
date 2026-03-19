@@ -4,12 +4,18 @@ import Highlights from "../components/Highlights";
 import Testimonials from "../components/Testimonials";
 import { Button } from "../components/ui/button";
 import { useCmsContent } from "../context/CmsContentContext";
+import SEO from "../components/SEO";
 
 export default function RetreatsPage() {
   const { siteAssets } = useCmsContent();
 
   return (
     <div className="py-8">
+      <SEO 
+        title="Yoga Retreats in Agonda Beach, Goa | Purnam Yogashala"
+        description="Escape to paradise for a transformative yoga retreat in South Goa. Daily meditation, traditional yoga classes, and relaxation at Agonda Beach."
+        keywords="yoga retreat goa, wellness retreat india, agonda beach yoga, spiritual retreat goa"
+      />
       <section className="mx-auto max-w-5xl px-4 md:px-6">
         <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
           Retreats
@@ -174,7 +180,7 @@ export default function RetreatsPage() {
           <h2 className="text-2xl font-semibold">What We Do</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
-              "Mindfullness",
+              "Mindfulness",
               "Body Balance",
               "Meditation Yoga",
               "Free Style Yoga",

@@ -192,8 +192,10 @@ export default function ContactPage() {
         >
           <option value="" disabled>Room preference</option>
           <option value="Private Room">Private Room</option>
+          <option value="AC Deluxe Room">AC Deluxe Room</option>
           <option value="Shared - Twin">Shared Room (Twin)</option>
           <option value="Shared - Triple">Shared Room (Triple)</option>
+          <option value="No Accommodation">No Accommodation</option>
         </Select>
         <Select
           value={formData.experience}

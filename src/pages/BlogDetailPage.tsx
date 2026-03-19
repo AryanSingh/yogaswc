@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 
 import { Button } from "../components/ui/button";
 import { useCmsContent } from "../context/CmsContentContext";
+import SEO from "../components/SEO";
 
 export default function BlogDetailPage() {
   const { slug } = useParams();
@@ -14,6 +15,11 @@ export default function BlogDetailPage() {
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-16 md:px-6">
+      <SEO 
+        title={`${post.title} | Yoga Blog Goa`}
+        description={post.summary}
+        keywords={`yoga blog, ${post.slug}, purnam yogashala blog, yoga india`}
+      />
       <p className="text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">
         Blog
       </p>

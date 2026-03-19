@@ -384,7 +384,7 @@ export const testimonials: Testimonial[] = [
 
 export const videoTestimonials: VideoTestimonial[] = [
   {
-    title: "Purnam YogaShala Goa Student Testimonial",
+    title: "Purnam Yogashala Goa Student Testimonial",
     duration: "Video Review",
     thumbnail: "https://img.youtube.com/vi/kLX7jqU6LYc/hqdefault.jpg",
     student: "Student Voice",
@@ -398,7 +398,7 @@ export const videoTestimonials: VideoTestimonial[] = [
     href: "https://www.youtube.com/watch?v=QBOoRkAfJpM",
   },
   {
-    title: "Purnam YogaShala Goa Student Testimonial",
+    title: "Purnam Yogashala Goa Student Testimonial",
     duration: "Video Review",
     thumbnail: "https://img.youtube.com/vi/7Eo4xbf6trI/hqdefault.jpg",
     student: "Student Voice",

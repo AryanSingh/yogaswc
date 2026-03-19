@@ -15,10 +15,16 @@ import FAQ from "../components/FAQ";
 import ApplicationSteps from "../components/ApplicationSteps";
 import BlogHighlights from "../components/BlogHighlights";
 import { Button } from "../components/ui/button";
+import SEO from "../components/SEO";
 
 export default function HomePage() {
   return (
     <>
+      <SEO 
+        title="Purnam Yogashala Goa | Authentic Yoga Teacher Training & Retreats"
+        description="Experience transformative 100hr & 200hr Yoga Teacher Training in Agonda, Goa. Accredited Yoga Alliance certification with experienced Indian masters."
+        keywords="yoga school goa, yoga teacher training goa, agonda beach, yoga alliance india, 200 hour yttc goa"
+      />
       <div data-reveal data-reveal-delay="0">
         <Hero />
       </div>

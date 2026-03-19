@@ -10,6 +10,7 @@ import {
 } from "../components/ui/card";
 import { useCmsContent } from "../context/CmsContentContext";
 import { courses } from "../data/siteContent";
+import SEO from "../components/SEO";
 
 type DetailTabKey =
   | "curriculum"
@@ -35,6 +36,7 @@ export default function CourseDetailPage() {
   if (!course) {
     return (
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
+        <SEO title="Course Not Found | Purnam Yogashala" />
         <h1 className="text-3xl font-semibold">Course Not Found</h1>
         <p className="mt-3 text-muted-foreground">
           The requested course does not exist. Please check available programs.
@@ -120,6 +122,11 @@ export default function CourseDetailPage() {
 
   return (
     <section className="mx-auto max-w-5xl px-4 py-12 md:px-6">
+      <SEO 
+        title={`${course.title} | Purnam Yogashala Goa`}
+        description={course.subtitle}
+        keywords={`yoga teacher training, ${course.slug}, yoga certification india, goa yoga`}
+      />
       <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
         <div>
           <img
