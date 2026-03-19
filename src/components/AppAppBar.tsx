@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { courses, socialLinks } from "../data/siteContent";
-import logo from "../assets/py_logo_new.png";
 import { useCmsContent } from "../context/CmsContentContext";
 import { useCustomerAuth } from "../context/useCustomerAuth";
 import { Button } from "./ui/button";
@@ -71,7 +70,7 @@ function SocialIcon({ name }: { name: (typeof socialLinks)[number]["name"] }) {
 }
 
 export default function AppAppBar() {
-  const { contactInfo } = useCmsContent();
+  const { contactInfo, siteAssets } = useCmsContent();
   const { isAuthenticated, logout, session } = useCustomerAuth();
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -163,8 +162,11 @@ export default function AppAppBar() {
           <Link to="/" className="flex shrink-0 items-center gap-x-1.5 pr-2 md:pr-4">
             <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border/20 md:h-20 md:w-20">
               <img
-                src={logo}
+                src={siteAssets.logo}
                 alt="Purnam Yogashala"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="h-full w-full object-cover"
               />
             </div>

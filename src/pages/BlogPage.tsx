@@ -29,6 +29,8 @@ export default function BlogPage() {
             <img
               src={post.image}
               alt={post.title}
+              loading="lazy"
+              decoding="async"
               className="h-56 w-full object-cover"
             />
             <div className="p-5">

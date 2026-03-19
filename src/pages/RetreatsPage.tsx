@@ -30,6 +30,9 @@ export default function RetreatsPage() {
         <img
           src={siteAssets.goaHero}
           alt="Goa yoga retreat"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="mt-6 h-72 w-full rounded-2xl object-cover"
         />
         <div className="mt-6 grid gap-4 md:grid-cols-3">

@@ -25,6 +25,9 @@ export default function BlogDetailPage() {
       <img
         src={post.image}
         alt={post.title}
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
         className="mt-8 h-72 w-full rounded-2xl object-cover"
       />
 

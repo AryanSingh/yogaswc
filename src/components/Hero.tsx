@@ -49,6 +49,9 @@ export default function Hero() {
       <img
         src={siteAssets.hero}
         alt="Yoga teacher training in India"
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover will-change-transform"
         style={{ transform: `translate3d(0, ${parallaxY}px, 0) scale(1.08)` }}
       />

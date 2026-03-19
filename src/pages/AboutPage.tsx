@@ -32,11 +32,15 @@ export default function AboutPage() {
           <img
             src={siteAssets.logo}
             alt="Purnam Yoga Shala logo"
+            loading="lazy"
+            decoding="async"
             className="h-14 w-auto"
           />
           <img
             src={siteAssets.yogaAlliance}
             alt="Yoga Alliance"
+            loading="lazy"
+            decoding="async"
             className="h-12 w-auto"
           />
         </div>

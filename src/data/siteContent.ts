@@ -88,7 +88,7 @@ export type BlogPost = BlogPostPreview & {
 export const siteAssets = {
   hero: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
   goaHero: `${uploadsBase}/2025/01/purnam-goa.jpg`,
-  logo: `${uploadsBase}/2024/07/logo-sign-2.png`,
+  logo: `${normalizedBase}/assets/py_logo_cropped.png`,
   yogaAlliance: `${uploadsBase}/2024/07/YOGA-ALLIANCE-RYT-1.png`,
   course100hr: `${uploadsBase}/2024/09/goa-yoga-ytt.jpeg`,
   course200hr: `${uploadsBase}/2024/07/51.jpeg`,

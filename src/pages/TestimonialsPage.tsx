@@ -35,6 +35,8 @@ export default function TestimonialsPage() {
                 <img
                   src={video.thumbnail}
                   alt={video.title}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />

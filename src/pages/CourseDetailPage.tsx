@@ -125,6 +125,9 @@ export default function CourseDetailPage() {
           <img
             src={course.image}
             alt={course.title}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             className="h-[320px] w-full rounded-2xl object-cover md:h-[430px]"
           />
           <p className="mt-6 text-xs uppercase tracking-[0.2em] text-[#8e5a3a] dark:text-[#d3a57c]">

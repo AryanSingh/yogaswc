@@ -26,6 +26,8 @@ export default function AccommodationPage() {
             <img
               src={feature.image}
               alt={feature.title}
+              loading="lazy"
+              decoding="async"
               className="h-52 w-full object-cover"
             />
             <div className="p-4">

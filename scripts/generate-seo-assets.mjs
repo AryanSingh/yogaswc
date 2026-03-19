@@ -8,7 +8,7 @@ const distDir = path.join(cwd, "dist");
 const siteUrl =
   process.env.VITE_SITE_URL ||
   process.env.SITE_URL ||
-  "https://aryansingh.github.io/yogaswc";
+  "https://purnamyogashala.com";
 
 const normalizedSiteUrl = siteUrl.endsWith("/")
   ? siteUrl.slice(0, -1)
@@ -45,9 +45,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 ${allRoutes
   .map((route) => {
     const location =
-      route === "/"
-        ? `${normalizedSiteUrl}/`
-        : `${normalizedSiteUrl}${route}`;
+      route === "/" ? `${normalizedSiteUrl}/` : `${normalizedSiteUrl}${route}`;
     return `  <url>
     <loc>${location}</loc>
     <lastmod>${today}</lastmod>

@@ -26,6 +26,8 @@ export default function TeachersPage() {
             <img
               src={teacher.image}
               alt={teacher.name}
+              loading="lazy"
+              decoding="async"
               className="h-56 w-full object-cover"
             />
             <div className="p-4">

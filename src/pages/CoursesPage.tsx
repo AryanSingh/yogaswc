@@ -32,6 +32,8 @@ export default function CoursesPage() {
             <img
               src={course.image}
               alt={course.title}
+              loading="lazy"
+              decoding="async"
               className="h-48 w-full object-cover"
             />
             <CardHeader>
